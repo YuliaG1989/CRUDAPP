@@ -7,6 +7,10 @@ const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
 require('dotenv').config()
+const recipeSeed = require('./models/seed.js')
+const Recipe = require('./models/schema.js')
+
+
 //___________________
 //Port
 //___________________
@@ -51,9 +55,50 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 // Routes
 //___________________
 //localhost:3000
+
+//___________________________
+//NEW________________________
+
+
+// Recipe.create(recipeSeed, (err, data)=>{
+// })
+
+//___________________________
+//SEED________________________
+
+// app.get('/seed', (req,res)=>{
+//   Recipe.create(recipeSeed, (err, data)=>{
+ 
+//   })
+//   res.redirect('/')
+// })
+// Recipe.collection.drop()
+
+//___________________________
+//INDEX_______________________
 app.get('/' , (req, res) => {
-  res.send('Hello World!');
+  Recipe.find({}, (err, recipeData)=>{
+  res.render('index.ejs', {recipe: recipeData});
+  })
 });
+
+//___________________________
+//SHOW_______________________
+app.get('/:id/show' , (req, res) => {
+  res.render('show.ejs');
+})
+
+//___________________________
+//EDIT_______________________
+app.get('/:id/edit' , (req, res) => {
+  res.render('edit.ejs');
+})
+
+
+
+
+
+
 
 //___________________
 //Listener
