@@ -14,28 +14,15 @@
     </head>
     <body>
         <header>
-            <div>
-    <h1>Around the World CookBook</h1>
+    <h1>Dishes</h1>
+</header>
+<a href ="/new"><div class = "button">Add New Recipe</div></a>
+<div>
+    <h3><%=recipe.dish%></h3>
+    <a href="/<%=recipe._id%>/show">
+    <img src = "<%=recipe.dishImg%>"></img>
+</a>
 </div>
-</header>  
-
-<section>
-    <div>
-        <% for(let i = 0; i<recipe.length; i++) {%>
-            <li>
-                <%=recipe[i].cuisine%>
-                <a href="/<%=recipe[i]._id%>/dishes">
-                <img src=<%=recipe[i].cuisineImg%>></img>
-            </a>
-          
-            </li>
-        <%}%>
-    </div>
-</section>
-
-
-
-
 
 
     </body>

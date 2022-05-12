@@ -8,7 +8,8 @@ const app = express ();
 const db = mongoose.connection;
 require('dotenv').config()
 const recipeSeed = require('./models/seed.js')
-const Recipe = require('./models/schema.js')
+const Recipe = require('./models/schema.js');
+
 
 
 //___________________
@@ -58,20 +59,27 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 
 //___________________________
 //NEW________________________
-
+app.get('/new', (req, res)=>{
+  res.render('new.ejs')
+})
+app.post('/:id/dishes', (req, res)=>{
+ Recipe.create(req.body)
+  res.redirect('/:id/dishes')
+})
 
 // Recipe.create(recipeSeed, (err, data)=>{
+//   console.log(data)
 // })
 
 //___________________________
 //SEED________________________
 
-// app.get('/seed', (req,res)=>{
-//   Recipe.create(recipeSeed, (err, data)=>{
+app.get('/seed', (req,res)=>{
+  Recipe.create(recipeSeed, (err, data)=>{
  
-//   })
-//   res.redirect('/')
-// })
+  })
+  res.redirect('/')
+})
 // Recipe.collection.drop()
 
 //___________________________
@@ -81,18 +89,39 @@ app.get('/' , (req, res) => {
   res.render('index.ejs', {recipe: recipeData});
   })
 });
+//___________________________
+//SHOW Dishes_______________________
+app.get('/:id/dishes' , (req, res) => {
+  Recipe.findById(req.params.id, (err, showCuisine)=>{
+    res.render('dishes.ejs', {recipe: showCuisine})
+  })
+  ;
+})
 
 //___________________________
-//SHOW_______________________
+//SHOW recipes_______________________
 app.get('/:id/show' , (req, res) => {
-  res.render('show.ejs');
+  Recipe.findById(req.params.id, (err, showCuisine)=>{
+    res.render('show.ejs', {recipe: showCuisine})
+  })
+  ;
 })
+
 
 //___________________________
 //EDIT_______________________
 app.get('/:id/edit' , (req, res) => {
-  res.render('edit.ejs');
+  Recipe.findById(req.params.id, (err, currentRecipe)=>{
+  res.render('edit.ejs', {recipe: currentRecipe})
 })
+})
+
+// app.put('/:id', (req, res)=>{
+//   res.send(req.body)
+// Recipe,findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedRecipe)=>{
+//   res.redirect('/')
+// })
+// })
 
 
 
