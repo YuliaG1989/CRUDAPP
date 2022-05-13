@@ -1,21 +1,14 @@
 const mongoose =require('mongoose')
 
-const recipeSchema = new mongoose.Schema({
-    dish: {type:String, required: true},
-    dishImg: {type:String, required: true},
-    cuisine: {type:String, required: true},
-    cuisineImg:{type:String, required: true},
-    cookingTime: {type:String, required: true},
-    difficulty: {type:Number, max: 5},
-    spiceLevel: {type: Number, max:5},
-    isVegan: Boolean,
-    ingredients: [String],
-    instructions: [String]
+const categorySchema = new mongoose.Schema({
+    name: {type:String, required: true},
+    image: {type:String, required: true},
+  
 
-})
+}, {timestamps:true})
 
 
 
-const recipeCollection = mongoose.model('Recipe', recipeSchema)
+const Category = mongoose.model('Category', categorySchema)
 
-module.exports = recipeCollection
+module.exports = Category
