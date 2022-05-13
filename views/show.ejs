@@ -10,25 +10,24 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/style.css">
         <link rel="stylesheet" href="/normalize.css">
-        <link rel="stylesheet" href="/sceleton.css">
+        <link rel="stylesheet" href="/skeleton.css">
     </head>
     <body>
         <header>
-    <h1><%=recipe.dish%></h1>
+    <h1><%=recipe.name%></h1>
 </header>
 <div>
-    <img src = "<%=recipe.dishImg%>"></img>
+    <img src = "<%=recipe.image%>"></img>
    <a href="/<%=recipe.id%>/edit"> <div class ='button'>Edit</div></a>
-  
-    
+   <form action ="/<%=recipe._id%>?_method=DELETE" method="POST">
+    <input type="submit" value="DELETE"/>
+</form>
+
     
 </div>
 <div><ul>
-    <li>Cuisine:<span><%=recipe.cuisine%></li>
-    <li>Cooking time: <%=recipe.cookingTime%></li>
-   <li>Difficulty: <%=recipe.difficulty%></li> 
-    <li>Spice Level: <%=recipe.spiceLevel%></li>
-    <li>Vegan: <%=recipe.isVegan%></li>
+    <li>Cuisine:<span><%=recipe.category%></li>
+   
 </ul>
 </div>
 <div>Ingredients

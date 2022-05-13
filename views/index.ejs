@@ -4,39 +4,46 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Good Food inc.</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/style.css">
         <link rel="stylesheet" href="/normalize.css">
-        <link rel="stylesheet" href="/sceleton.css">
+        <link rel="stylesheet" href="/skeleton.css">
+        
     </head>
     <body>
-        <header>
-            <div>
-    <h1>Around the World CookBook</h1>
-</div>
-</header>  
+<main>
+    <header>
+        <nav>
+            <ul>
+                <li><a href ="/"><h1>GOOD FOOD</h1></a></li>
+                <li><a href ="/new">Submit New Recipe</a></li>
+                <li><a href="#">About</a></li>
+    
+            </ul>
 
-<section>
-    <div>
-        <% for(let i = 0; i<recipe.length; i++) {%>
-            <li>
-                <%=recipe[i].cuisine%>
-                <a href="/<%=recipe[i]._id%>/dishes">
-                <img src=<%=recipe[i].cuisineImg%>></img>
-            </a>
+        </nav>
+    </header>
+
+</main>
+ 
+    
+        <% for(let i = 0; i<category.length; i++) {%>
           
-            </li>
+            <section>
+            <a href="/<%=category[i].name%>"><%=category[i].name%></a>
+            </section>   
+            
         <%}%>
-    </div>
-</section>
+     
 
 
+</div>
 
 
-
-
+<footer><p>Created by Yulia</p></footer>
     </body>
 </html>

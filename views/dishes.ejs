@@ -10,19 +10,22 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/style.css">
         <link rel="stylesheet" href="/normalize.css">
-        <link rel="stylesheet" href="/sceleton.css">
+        <link rel="stylesheet" href="/skeleton.css">
     </head>
     <body>
+      
+<% for(let j = 0; j<recipe.length; j++) {%>
         <header>
-    <h1>Dishes</h1>
-</header>
-<a href ="/new"><div class = "button">Add New Recipe</div></a>
-<div>
-    <h3><%=recipe.dish%></h3>
-    <a href="/<%=recipe._id%>/show">
-    <img src = "<%=recipe.dishImg%>"></img>
-</a>
-</div>
+        <h1><%=recipe[j].category%></h1>
+        </header>
+        
+        <h2><%=recipe[j].name%></h2>
+        <a href = "/<%=recipe[j].id%>"><img src=<%=recipe[j].image%>></img></a>
+    
+    
+<%}%>
+
+
 
 
     </body>

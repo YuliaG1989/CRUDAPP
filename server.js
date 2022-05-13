@@ -7,9 +7,10 @@ const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
 require('dotenv').config()
-const recipeSeed = require('./models/seed.js')
-const Recipe = require('./models/schema.js');
-
+const categoriesSeed = require('./models/seed.js')
+const recipeSeed = require('./models/recipeSeed.js')
+const Categories = require('./models/schema.js');
+const Recipe = require('./models/recipeSchema.js')
 
 
 //___________________
@@ -67,47 +68,92 @@ app.post('/:id/dishes', (req, res)=>{
   res.redirect('/:id/dishes')
 })
 
-// Recipe.create(recipeSeed, (err, data)=>{
+// Categories.create(categoriesSeed, (err, data)=>{
 //   console.log(data)
 // })
 
-//___________________________
+// Recipe.create(recipeSeed, (err, data)=>{
+//   if(err){
+//     console.log(err)
+//   }else{
+//   console.log(data)
+//   }
+// })
+// ___________________________
 //SEED________________________
 
-app.get('/seed', (req,res)=>{
-  Recipe.create(recipeSeed, (err, data)=>{
+// app.get('/seed', (req,res)=>{
+//   Recipe.create(categoriesSeed, (err, data)=>{
  
-  })
-  res.redirect('/')
-})
-// Recipe.collection.drop()
-
+//   })
+//   res.redirect('/')
+// })
+// Categories.collection.drop()
+// app.get('/seed', (req,res)=>{
+//   Categories.create(categoriesSeed, (err, data)=>{
+ 
+//   })
+//   res.redirect('/')
+// })
 //___________________________
 //INDEX_______________________
 app.get('/' , (req, res) => {
-  Recipe.find({}, (err, recipeData)=>{
-  res.render('index.ejs', {recipe: recipeData});
+  Categories.find({}, (err, categoriesData)=>{
+  res.render('index.ejs', {category: categoriesData});
   })
 });
-//___________________________
-//SHOW Dishes_______________________
-app.get('/:id/dishes' , (req, res) => {
-  Recipe.findById(req.params.id, (err, showCuisine)=>{
+
+//_______________________________________
+//SHOW DISHES PICTURES AND NAMES_________
+app.get('/thai' , (req, res) => {
+  Recipe.find({category:'Thai'}, (err, showCuisine)=>{
     res.render('dishes.ejs', {recipe: showCuisine})
   })
-  ;
+})
+app.get('/korean' , (req, res) => {
+  Recipe.find({category:'Korean'}, (err, showCuisine)=>{
+    res.render('dishes.ejs', {recipe: showCuisine})
+  })
+})
+app.get('/chinese' , (req, res) => {
+  Recipe.find({category:'Chinese'}, (err, showCuisine)=>{
+    res.render('dishes.ejs', {recipe: showCuisine})
+  })
+})
+app.get('/american' , (req, res) => {
+  Recipe.find({category:'American'}, (err, showCuisine)=>{
+    res.render('dishes.ejs', {recipe: showCuisine})
+  })
+})
+app.get('/japanese' , (req, res) => {
+  Recipe.find({category:'Japanese'}, (err, showCuisine)=>{
+    res.render('dishes.ejs', {recipe: showCuisine})
+  })
+})
+app.get('/spanish' , (req, res) => {
+  Recipe.find({category:'Spanish'}, (err, showCuisine)=>{
+    res.render('dishes.ejs', {recipe: showCuisine})
+  })
+})
+app.get('/greek' , (req, res) => {
+  Recipe.find({category:'Greek'}, (err, showCuisine)=>{
+    res.render('dishes.ejs', {recipe: showCuisine})
+  })
+})
+app.get('/mexican' , (req, res) => {
+  Recipe.find({category:'Mexican'}, (err, showCuisine)=>{
+    res.render('dishes.ejs', {recipe: showCuisine})
+  })
 })
 
 //___________________________
-//SHOW recipes_______________________
-app.get('/:id/show' , (req, res) => {
-  Recipe.findById(req.params.id, (err, showCuisine)=>{
-    res.render('show.ejs', {recipe: showCuisine})
+//SHOW RECIPES_______________________
+
+app.get('/:id' , (req, res) => {
+  Recipe.findById(req.params.id, (err, idRecipe)=>{
+    res.render('show.ejs', {recipe: idRecipe})
   })
-  ;
 })
-
-
 //___________________________
 //EDIT_______________________
 app.get('/:id/edit' , (req, res) => {
@@ -116,14 +162,18 @@ app.get('/:id/edit' , (req, res) => {
 })
 })
 
-// app.put('/:id', (req, res)=>{
-//   res.send(req.body)
-// Recipe,findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedRecipe)=>{
-//   res.redirect('/')
-// })
-// })
+app.put('/:id', (req, res)=>{
+  res.send(req.body)
+Recipe,findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedRecipe)=>{
+  res.redirect('/')
+})
+})
 
-
+app.delete('/:id', (req, res)=>{
+    Recipe.findByIdAndRemove(req.params.id, (err, data)=>{
+        res.redirect('/');//redirect back home
+    })
+})
 
 
 
