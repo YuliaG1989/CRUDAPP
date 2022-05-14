@@ -19,7 +19,7 @@ header{
    text-align: center;
 }
 a{
-    color: black;
+    color: black !important;
     text-decoration: none;
  
  }
@@ -72,3 +72,4 @@ footer{
     font-weight: 400;
     text-align: center;
 }
+
