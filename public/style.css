@@ -5,6 +5,7 @@
 } */
 
 section{
+    
     width: 100vw;
     border-bottom: 1px solid black;
     font-size: 40px;
@@ -45,19 +46,10 @@ li{
     color: black;
     list-style-type: none;
 }
-.button{
-    display: inline-block;
-    width: 100px;
-    height: 50px;
-    font-size: 20px;
-    background-color: rgb(227, 132, 123);
-    border-radius: 30px;
-    text-align: center;
-    text-decoration: none;
-    color:black;
-    padding-top: 10px;
-    margin-bottom: 10px;
-    margin-top: 10px;
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
 }
 
 footer{
@@ -73,4 +65,10 @@ footer{
 .create{
     text-align: center;
     margin-top: 100px;
+}
+
+.random{
+    font-size: 60px;
+    font-weight: 400;
+    text-align: center;
 }

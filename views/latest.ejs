@@ -4,26 +4,22 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Good Food inc.</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/style.css">
         <link rel="stylesheet" href="/normalize.css">
         <link rel="stylesheet" href="/skeleton.css">
+        
     </head>
     <body>
-        
-<% for(let j = 0; j<recipe.length; j++) {%>
-        
-        <h2><%=recipe[j].name%></h2>
-        <a href = "/<%=recipe[j].id%>"><img src=<%=recipe[j].image%>></img></a>
-    
-    
-<%}%>
+        <header><h1>GOOD FOOD</h1></header>
+        <% for(let p = 0; p<recipe.length; p++){%>
+            <%=recipe[p].recipe.length-1%>
 
-
-
-
+        <%}%>
+        <script src="" async defer></script>
     </body>
 </html>

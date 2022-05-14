@@ -63,11 +63,11 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 app.get('/new', (req, res)=>{
   res.render('new.ejs')
 })
-app.post('/:id/dishes', (req, res)=>{
- Recipe.create(req.body)
-  res.redirect('/:id/dishes')
-})
 
+app.post('/new', (req, res)=>{
+  Recipe.create(req.body)
+  res.redirect('/')
+})
 // Categories.create(categoriesSeed, (err, data)=>{
 //   console.log(data)
 // })
@@ -88,6 +88,9 @@ app.post('/:id/dishes', (req, res)=>{
 //   })
 //   res.redirect('/')
 // })
+
+// Recipe.collection.drop()
+
 // Categories.collection.drop()
 // app.get('/seed', (req,res)=>{
 //   Categories.create(categoriesSeed, (err, data)=>{
@@ -156,18 +159,23 @@ app.get('/:id' , (req, res) => {
 })
 //___________________________
 //EDIT_______________________
-app.get('/:id/edit' , (req, res) => {
+app.get('/:id/edit', (req, res)=>{
   Recipe.findById(req.params.id, (err, currentRecipe)=>{
-  res.render('edit.ejs', {recipe: currentRecipe})
-})
+    res.render('edit.ejs', {recipe: currentRecipe})
+  })
 })
 
-app.put('/:id', (req, res)=>{
-  res.send(req.body)
-Recipe,findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedRecipe)=>{
-  res.redirect('/')
+app.put('/:id/edit', (req, res)=>{
+  req.body
+  Recipe.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedItem)=>{
+  
+    res.redirect('/')
+
+  })
 })
-})
+
+
+//////////DELETE
 
 app.delete('/:id', (req, res)=>{
     Recipe.findByIdAndRemove(req.params.id, (err, data)=>{
