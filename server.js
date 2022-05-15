@@ -71,7 +71,12 @@ app.post('/new', (req, res)=>{
 // Categories.create(categoriesSeed, (err, data)=>{
 //   console.log(data)
 // })
-
+// app.get('/seed', (req,res)=>{
+//   Categories.create(categoriesSeed, (err, data)=>{
+ 
+//   })
+//   res.redirect('/')
+// })
 // Recipe.create(recipeSeed, (err, data)=>{
 //   if(err){
 //     console.log(err)
@@ -82,22 +87,22 @@ app.post('/new', (req, res)=>{
 // ___________________________
 //SEED________________________
 
-app.get('/seed', (req,res)=>{
-  Recipe.create(categoriesSeed, (err, data)=>{
- 
-  })
-  res.redirect('/')
-})
-
-// Recipe.collection.drop()
-
-// Categories.collection.drop()
 // app.get('/seed', (req,res)=>{
-//   Categories.create(categoriesSeed, (err, data)=>{
+//   Recipe.create(categoriesSeed, (err, data)=>{
  
 //   })
 //   res.redirect('/')
 // })
+
+
+
+
+// Recipe.collection.drop()
+
+// Categories.collection.drop()
+
+
+
 //___________________________
 //INDEX_______________________
 app.get('/' , (req, res) => {
@@ -158,7 +163,11 @@ app.get('/mexican' , (req, res) => {
     res.render('dishes.ejs', {recipe: showCuisine})
   })
 })
-
+app.get('/vietnamese' , (req, res) => {
+  Recipe.find({category:'Vietnamese'}, (err, showCuisine)=>{
+    res.render('dishes.ejs', {recipe: showCuisine})
+  })
+})
 //___________________________
 //SHOW RECIPES_______________________
 
