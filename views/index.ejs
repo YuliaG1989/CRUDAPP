@@ -21,25 +21,30 @@
                     <ul>
                         <li><a href ="/"><h1>GOOD FOOD</h1></a></li>
                         <li><a href ="/new">Submit New Recipe</a></li>
-                        <li>About</li>
+                        <li><a href= "#">About</a></li>
             
                     </ul>
         
                 </nav>
             </header>
+            <main>
                 <% for(let i = 0; i<category.length; i++) {%>
                   
                     <section>
-                    <a href="/<%=category[i].name%>"><%=category[i].name%></a>
+                    <a href="/<%=category[i].name%>">
+                        <div class = "category" >
+                            <%=category[i].name%>
+                        </div>
+                    </a>
                     </section>   
                     
                 <%}%> 
+        </main>
         
-        </div>
-        <div class = "random">
+       <a href = '/random'> <p class = "random">
             WHATS FOR DINNER?
-        </div>
-        
+        </p>
+    </a>
         <footer><p>Created by Yulia</p></footer>
     </body>
         </html>

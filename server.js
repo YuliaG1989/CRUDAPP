@@ -64,10 +64,10 @@ app.get('/new', (req, res)=>{
   res.render('new.ejs')
 })
 
-app.post('/new', (req, res)=>{
-  Recipe.create(req.body)
-  res.redirect('/')
-})
+// app.post('/new', (req, res)=>{
+//   Recipe.create(req.body)
+//   res.redirect('/')
+// })
 // Categories.create(categoriesSeed, (err, data)=>{
 //   console.log(data)
 // })
@@ -82,12 +82,12 @@ app.post('/new', (req, res)=>{
 // ___________________________
 //SEED________________________
 
-// app.get('/seed', (req,res)=>{
-//   Recipe.create(categoriesSeed, (err, data)=>{
+app.get('/seed', (req,res)=>{
+  Recipe.create(categoriesSeed, (err, data)=>{
  
-//   })
-//   res.redirect('/')
-// })
+  })
+  res.redirect('/')
+})
 
 // Recipe.collection.drop()
 
@@ -105,6 +105,16 @@ app.get('/' , (req, res) => {
   res.render('index.ejs', {category: categoriesData});
   })
 });
+
+//_______________________________________
+//SHOW RANDOM RECIPE_____________________
+app.get('/random', (req,res)=>{
+  // let count = Recipe.find().countDocuments()
+  // let random = Math.floor(Math.random * count)
+  Recipe.find({}, (err, randomRecipe)=>{
+  res.render('random.ejs', {recipe: randomRecipe})
+})
+})
 
 //_______________________________________
 //SHOW DISHES PICTURES AND NAMES_________

@@ -8,18 +8,21 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+       
         <link rel="stylesheet" href="/style.css">
         <link rel="stylesheet" href="/normalize.css">
         <link rel="stylesheet" href="/skeleton.css">
         
     </head>
-    <body>
-        <header><h1>GOOD FOOD</h1></header>
-        <% for(let p = 0; p<recipe.length; p++){%>
-            <%=recipe[p].recipe.length-1%>
-
-        <%}%>
-        <script src="" async defer></script>
+ <body>
+        <h1>WHATS FOR DINNER?</h1>
+         
+       <%let random = Math.floor(Math.random() * recipe.length)%>
+                 <h1> <%=recipe[random].name%></h1>   
+                <img src =<%=recipe[random].image%>>
+                <p><%=recipe[random].ingredients%></p>
+                <p><%=recipe[random].instructions%></p>
+        
+  
     </body>
-</html>
+        </html>

@@ -18,8 +18,8 @@
     </header>
            <div>
                <form class ="create" action="/<%=recipe.id%>/edit?_method=PUT" method="POST">
-                   <label>Name</label><input type ="text" name="name" value =""></br>
-                   <label>Image</label><input type ="url" name="image" value =""></br>
+                   <label>Name</label><input type ="text" name="name" value ="<%=recipe.name%>"></br>
+                   <label>Image</label><input type ="url" name="image" value ="<%=recipe.image%>"></br>
                    <label>Category</label>
             <select type ="text" name="category" value ="">
                 <option selected>Select Category</option>
