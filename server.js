@@ -64,10 +64,10 @@ app.get('/new', (req, res)=>{
   res.render('new.ejs')
 })
 
-// app.post('/new', (req, res)=>{
-//   Recipe.create(req.body)
-//   res.redirect('/')
-// })
+app.post('/new', (req, res)=>{
+  Recipe.create(req.body)
+  res.redirect('/')
+})
 // Categories.create(categoriesSeed, (err, data)=>{
 //   console.log(data)
 // })

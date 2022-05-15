@@ -15,14 +15,18 @@
         
     </head>
  <body>
-        <h1>WHATS FOR DINNER?</h1>
+     <header>
+        <h1>RECIPE TO TRY</h1>
+     </header>
+       
          
        <%let random = Math.floor(Math.random() * recipe.length)%>
+                <div class = random-recipe>
                  <h1> <%=recipe[random].name%></h1>   
                 <img src =<%=recipe[random].image%>>
                 <p><%=recipe[random].ingredients%></p>
                 <p><%=recipe[random].instructions%></p>
-        
+            </div>
   
     </body>
         </html>
