@@ -22,14 +22,14 @@
     
             </nav>
         </header>
+        <div class = "dish">
 <% for(let j = 0; j<recipe.length; j++) {%>
         
-        <h2><%=recipe[j].name%></h2>
+       <h3> <%=recipe[j].name%></h3>
         <a href = "/<%=recipe[j].id%>"><img src=<%=recipe[j].image%>></img></a>
-    
-    
+  
 <%}%>
-
+</div>
 
 
 

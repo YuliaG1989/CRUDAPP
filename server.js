@@ -165,15 +165,23 @@ app.get('/mexican' , (req, res) => {
 })
 app.get('/vietnamese' , (req, res) => {
   Recipe.find({category:'Vietnamese'}, (err, showCuisine)=>{
+    if(err){
+      console.log(err)
+    }else{
     res.render('dishes.ejs', {recipe: showCuisine})
+    }
   })
 })
 //___________________________
 //SHOW RECIPES_______________________
 
-app.get('/:id' , (req, res) => {
-  Recipe.findById(req.params.id, (err, idRecipe)=>{
+app.get('/:_id' , (req, res) => {
+  Recipe.findById(req.params._id, (err, idRecipe)=>{
+    if(err){
+      console.log(err)
+    }else{
     res.render('show.ejs', {recipe: idRecipe})
+    }
   })
 })
 //___________________________
