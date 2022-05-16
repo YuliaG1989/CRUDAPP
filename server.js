@@ -9,8 +9,7 @@ const db = mongoose.connection;
 require('dotenv').config()
 const categoriesSeed = require('./models/seed.js')
 const recipeSeed = require('./models/recipeSeed.js')
-const Categories = require('./models/schema.js');
-const Recipe = require('./models/recipeSchema.js')
+
 
 
 //___________________
@@ -52,7 +51,8 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 //use method override
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 
-
+const recipeController = require('./controllers/recipe.js');
+app.use(recipeController);
 //___________________
 // Routes
 //___________________
