@@ -68,6 +68,13 @@ app.post('/new', (req, res)=>{
   Recipe.create(req.body)
   res.redirect('/')
 })
+//////////////LOGIN
+
+app.get('/login', (req,res)=>{
+  res.render('login.ejs')
+})
+
+
 // Categories.create(categoriesSeed, (err, data)=>{
 //   console.log(data)
 // })
@@ -177,8 +184,8 @@ app.get('/vietnamese' , (req, res) => {
 
 app.get('/:_id' , (req, res) => {
   Recipe.findById(req.params._id, (err, idRecipe)=>{
-    if(err){
-      console.log(err)
+    if (req.params._id === "favicon.ico") {
+      return res.status(404)
     }else{
     res.render('show.ejs', {recipe: idRecipe})
     }
@@ -191,7 +198,6 @@ app.get('/:id/edit', (req, res)=>{
     res.render('edit.ejs', {recipe: currentRecipe})
   })
 })
-
 app.put('/:id/edit', (req, res)=>{
   req.body
   Recipe.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedItem)=>{
@@ -217,4 +223,4 @@ app.delete('/:id', (req, res)=>{
 //___________________
 //Listener
 //___________________
-app.listen(PORT, () => console.log( 'Listening on port:', PORT));
+app.listen(PORT, () => console.log( 'Listening on port:', PORT))

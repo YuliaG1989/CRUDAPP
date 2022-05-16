@@ -9,23 +9,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/style.css">
+        <link rel="icon" type="image/svg+xml" href="https://example.com/image.svg">
         <link rel="stylesheet" href="/normalize.css">
         <link rel="stylesheet" href="/skeleton.css">
     </head>
     <body>
         <header>
-            <nav>
-                <ul>
-                    <li><a href ="/"><h1>GOOD FOOD</h1></a></li>
-                    
-                </ul>
-    
-            </nav>
+        
         </header>
         <div class = "dish">
 <% for(let j = 0; j<recipe.length; j++) {%>
-        
-       <h3> <%=recipe[j].name%></h3>
+      
+       <h4> <%=recipe[j].name%></h4>
         <a href = "/<%=recipe[j].id%>"><img src=<%=recipe[j].image%>></img></a>
   
 <%}%>
