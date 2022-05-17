@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <%- include ('./partials/head.ejs') %>
+        
+    </head>
+    <body>
+        <style>
+            .login{
+                margin-bottom: 300px;
+            }
+        </style>
+        <%- include ('./partials/header.ejs') %>
+
+<p><h3>Create an account</h3></p>
+<form action="/register" method="POST">
+    <label  class="form-label">Your name/username</label>
+    <input type="text" name="username" id="username" required></br>
+    <label  class="form-label">Email</label>
+    <input type ="email" name="email" id="email" required></br>
+    <label  class="form-label">Your password</label>
+    <input type="password" name="password" id="password" required></br>
+    <label  class="form-label">Confirm your password</label>
+    <input type="password" name="password" id ="password" required>
+   <button class="btn btn-outline-secondary">Submit</button> 
+</form>
+
+<%- include('./partials/footer.ejs') %>
+</body>
+    </html>
