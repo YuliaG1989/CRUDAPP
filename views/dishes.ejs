@@ -9,15 +9,21 @@
             <%- include ('./partials/header.ejs') %>
         </header>
 
-     
+        <div class="container">
+            <div class = "row">
 <% for(let j = 0; j<recipe.length; j++) {%>
     
-       <h4> <%=recipe[j].name%></h4>
-        <a href = "/<%=recipe[j].id%>"><img src=<%=recipe[j].image%>></img></a>
-  
+    <div class="col-sm-12 col-md-8 col-sm-4 " style="width: 36rem;">
+        <a href = "/<%=recipe[j].id%>">
+            <img class="card-img-top" src="<%=recipe[j].image%>" alt="Card image cap">
+        </a>
+        <div class="card-body">
+          <p class="card-text"><h4> <%=recipe[j].name%></h4></p>
+        </div>
+      </div>
 <%}%>
-
-
+    </div>
+    </div>
 
 <%- include('./partials/footer.ejs') %>
     </body>

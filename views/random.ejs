@@ -10,21 +10,20 @@
         <%- include ('./partials/header.ejs') %>
         
      </header>
-     <div class = 'h2-float'>
-     <h2>ForkEat, let's try it!</h2>
-    </div>   
+        <div class="container" style="margin-top:20px;"><h2>ForkYeah. Let's try it!</h2></div>
        <%let random = Math.floor(Math.random() * recipe.length)%>
-                <div class = random-recipe>
+                <div class = "container">
+                    <div class = "row">
+                        <div class = "col-6">
                  <h3> <%=recipe[random].name%></h3> 
-                 <div class ="random-image">  
-                <img src =<%=recipe[random].image%>>
-            </div>
+                <img style="width: 24rem;" src =<%=recipe[random].image%>>
+                </div>
                 <div>
                     <ul>
                     <li>Cuisine:<%=recipe[random].category%></li>
-                   
-                </ul>
                 </div>
+                <div class ="col-6">
+                </ul>
                 <div>Ingredients
                     <ol class>
                     <li><%=recipe[random].ingredients[0]%></li>
@@ -51,7 +50,9 @@
                 <div>Instructions
                     <p><%=recipe[random].instructions%></p>
                 </div>
-  
+            </div>
+            </div>
+        </div>
     </body>
     <%- include('./partials/footer.ejs') %>
     

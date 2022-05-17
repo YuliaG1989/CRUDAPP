@@ -41,25 +41,20 @@ a{
      font-size: large;
  }
 
-img {
+/* img {
     
     height: 30%;
     width: 30%;
     box-shadow: 3px 3px 3px black;
-}
-.main{
+} */
+/* .main{
     height: 200px;
     width: 400px;
-}
+} */
 li{
     color: black;
     list-style-type: none;
     
-}
-
-.buttons{
-    display: flex;
-    justify-content: space-between;
 }
 
 footer{
@@ -85,8 +80,6 @@ footer{
    
    
 }
-
-
 .login {
     text-align: center;
     margin-top: 50px;
@@ -96,10 +89,10 @@ footer{
     margin-top: 10px;
 }
 
-.img{
+/* .img{
     position: relative;
 }
 .overlay-text{
     position: absolute;
     font-size: 30px;
-}
+} */

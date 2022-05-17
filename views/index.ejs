@@ -8,43 +8,33 @@
  <body>
     <%- include ('./partials/header.ejs') %>
             <style>
-                .body{
-                    background-color: bisque;
-                }
+               
+                
             </style>
-        
-                <div class = ".container ">
-                    <div class = "row">
-                <image class="col-sm-12 col-md-6 col-lg-4" src=<%=category[0].image%>>
-                <image class="col-sm-12 col-md-6 col-lg-4" src=<%=category[1].image%>>
-                <image class="col-sm-12 col-md-6 col-lg-4" src=<%=category[2].image%>>
-                <image class="col-sm-12 col-md-6 col-lg-4" src=<%=category[3].image%>>
-                <image class="col-sm-12 col-md-6 col-lg-4" src=<%=category[4].image%>>
-                <image class="col-sm-12 col-md-6 col-lg-4" src=<%=category[5].image%>>
-                <image class="col-sm-12 col-md-6 col-lg-4" src=<%=category[6].image%>>
-                <image class="col-sm-12 col-md-6 col-lg-4" src=<%=category[7].image%>>
-                <image class="col-sm-12 col-md-6 col-lg-4" src=<%=category[8].image%>>
-                </div>
-                        </div>
-                <div class="row justify-content-flex-end"> 
-                        
+           <div class="container">
+                <div class = "row">
                 <% for(let i = 0; i<category.length; i++) {%>
-                    <div class = "row-sm-12 row-md-6 row-lg-6">
-                    <a href="/<%=category[i].name%>">   
-                    <h3><%=category[i].name%></h3>   
-                    </a>
-                   </div>
+                    <div class="card col-sm-12 col-md-6 col-sm-4 " style="width: 26rem;">
+                        <img class="card-img-top" src="<%=category[i].image%>" alt="Card image cap">
+                        <div class="card-body">
+                          <h4 class="card-title"><%=category[i].name%></h4>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <a href="/<%=category[i].name%>" class="btn btn-primary">Explore the Recipes</a>
+                        </div>
+                      </div>
+        
                 <%}%> 
-                    </div>
-                </div>
+            </div>
+        </div>
 
          
-            <div><h2>Not sure what to cook?</h2>
+            <section style="height:300px; margin-top: 70px; text-align:center;"><h1>Not sure what to cook?</h1>
        <a href = '/random'> 
            <button class ="btn btn-outline-secondary text-dark">
            Here's a recipe to try
         </button>
     </a>
+    </section>
 
    
    
