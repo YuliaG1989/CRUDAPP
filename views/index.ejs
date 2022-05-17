@@ -21,6 +21,13 @@
                 <image class = "col-md-6" style="max-width:45%; " src ="/images/edward-howell-TACZ-gz4li4-unsplash.jpg">
                 </div>
             </div>
+            <section style="height:200px; margin-top: 30px; margin-bottom: 30px; text-align:center;"><h1>Not sure what to make?</h1>
+                <a href = '/random'> 
+                    <button class ="btn btn-outline-secondary text-dark">
+                    Here's a recipe to try
+                 </button>
+             </a>
+             </section>
            <div class="container">
                 <div class = "row">
                 <% for(let i = 0; i<category.length; i++) {%>
@@ -37,16 +44,6 @@
             </div>
         </div>
 
-         
-            <section style="height:300px; margin-top: 70px; text-align:center;"><h1>Not sure what to make?</h1>
-       <a href = '/random'> 
-           <button class ="btn btn-outline-secondary text-dark">
-           Here's a recipe to try
-        </button>
-    </a>
-    </section>
-
-   
    
      <%- include('./partials/footer.ejs') %>
     <!-- JavaScript Bundle with Popper -->
