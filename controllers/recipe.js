@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Categories = require('../models/schema.js');
 const Recipe = require('../models/recipeSchema.js')
-
+const categoriesSeed = require('../models/seed.js')
+const recipeSeed = require('../models/recipeSeed.js')
 // Routes
 //___________________
 //localhost:3000
@@ -133,29 +134,32 @@ router.get('/new', (req, res)=>{
   
   router.get('/:_id' , (req, res) => {
     Recipe.findById(req.params._id, (err, idRecipe)=>{
-      if (req.params._id === "favicon.ico") {
-        return res.status(404)
-      }else{
+      // if (req.params._id === "favicon.ico") {
+      //   return res.status(404)
+      // }else{
       res.render('show.ejs', {recipe: idRecipe})
-      }
+      // }
     })
   })
   //___________________________
   //EDIT_______________________
-  router.get('/:id/edit', (req, res)=>{
-    Recipe.findById(req.params.id, (err, currentRecipe)=>{
+  router.put('/:_id', (req, res)=>{
+    // res.send(req.body)
+    Recipe.findByIdAndUpdate(req.params._id, req.body, {new: true}, (err, updatedItem)=>{
+      if(err){
+        console.log(err)
+      }else{
+      res.redirect('/')
+    }
+    })
+  })
+  
+  router.get('/:_id/edit', (req, res)=>{
+    Recipe.findById(req.params._id, (err, currentRecipe)=>{
       res.render('edit.ejs', {recipe: currentRecipe})
     })
   })
-  router.put('/:id/edit', (req, res)=>{
-    req.body
-    Recipe.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedItem)=>{
-    
-      res.redirect('/')
-  
-    })
-  })
-  
+ 
   
   //////////DELETE
   

@@ -9,14 +9,15 @@
             <%- include ('./partials/header.ejs') %>
     
 </header>
-<h1>Create</h1>
-       <div>
-        <form class ="create" action="/new" method="POST">
+
+       <div class = "container">
+        <h1>Create</h1>
+        <form action="/new" method="POST">
             <label class="form-label">Name</label>
                    <div class="col-sm-6">
                    <input type ="text" name="name"class="form-control" value =""></br>
                 </div>
-                   <label  class="form-label">Image</label><input type="file" class="form-control-file" id="formFileMultiple" multiple name="image" value =""></br>
+                   <label  class="form-label">Image</label><input type="file" class="form-control" accept="image/*"name="image" value =""></br>
                    <label class="form-label">Category</label>
             <select type ="text" name="category" class="form-select" value ="">
                 <option selected>Select Category</option>
@@ -35,6 +36,7 @@
                  <input class="btn btn-outline-secondary" type = submit name ="" value = Submit>
                </form>
        </div>
+    </div>
        <%- include('./partials/footer.ejs') %>
        
     </body>

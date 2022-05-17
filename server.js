@@ -7,8 +7,7 @@ const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
 require('dotenv').config()
-const categoriesSeed = require('./models/seed.js')
-const recipeSeed = require('./models/recipeSeed.js')
+
 
 
 
@@ -60,19 +59,19 @@ app.use(recipeController);
 
 //___________________________
 //NEW________________________
-app.get('/new', (req, res)=>{
-  res.render('new.ejs')
-})
+// app.get('/new', (req, res)=>{
+//   res.render('new.ejs')
+// })
 
-app.post('/new', (req, res)=>{
-  Recipe.create(req.body)
-  res.redirect('/')
-})
+// app.post('/new', (req, res)=>{
+//   Recipe.create(req.body)
+//   res.redirect('/')
+// })
 //////////////LOGIN
 
-app.get('/login', (req,res)=>{
-  res.render('login.ejs')
-})
+// app.get('/login', (req,res)=>{
+//   res.render('login.ejs')
+// })
 
 
 // Categories.create(categoriesSeed, (err, data)=>{
@@ -112,109 +111,109 @@ app.get('/login', (req,res)=>{
 
 //___________________________
 //INDEX_______________________
-app.get('/' , (req, res) => {
-  Categories.find({}, (err, categoriesData)=>{
-  res.render('index.ejs', {category: categoriesData});
-  })
-});
+// app.get('/' , (req, res) => {
+//   Categories.find({}, (err, categoriesData)=>{
+//   res.render('index.ejs', {category: categoriesData});
+//   })
+// });
 
 //_______________________________________
 //SHOW RANDOM RECIPE_____________________
-app.get('/random', (req,res)=>{
+// app.get('/random', (req,res)=>{
   // let count = Recipe.find().countDocuments()
   // let random = Math.floor(Math.random * count)
-  Recipe.find({}, (err, randomRecipe)=>{
-  res.render('random.ejs', {recipe: randomRecipe})
-})
-})
+//   Recipe.find({}, (err, randomRecipe)=>{
+//   res.render('random.ejs', {recipe: randomRecipe})
+// })
+// })
 
 //_______________________________________
 //SHOW DISHES PICTURES AND NAMES_________
-app.get('/thai' , (req, res) => {
-  Recipe.find({category:'Thai'}, (err, showCuisine)=>{
-    res.render('dishes.ejs', {recipe: showCuisine})
-  })
-})
-app.get('/korean' , (req, res) => {
-  Recipe.find({category:'Korean'}, (err, showCuisine)=>{
-    res.render('dishes.ejs', {recipe: showCuisine})
-  })
-})
-app.get('/chinese' , (req, res) => {
-  Recipe.find({category:'Chinese'}, (err, showCuisine)=>{
-    res.render('dishes.ejs', {recipe: showCuisine})
-  })
-})
-app.get('/american' , (req, res) => {
-  Recipe.find({category:'American'}, (err, showCuisine)=>{
-    res.render('dishes.ejs', {recipe: showCuisine})
-  })
-})
-app.get('/japanese' , (req, res) => {
-  Recipe.find({category:'Japanese'}, (err, showCuisine)=>{
-    res.render('dishes.ejs', {recipe: showCuisine})
-  })
-})
-app.get('/spanish' , (req, res) => {
-  Recipe.find({category:'Spanish'}, (err, showCuisine)=>{
-    res.render('dishes.ejs', {recipe: showCuisine})
-  })
-})
-app.get('/greek' , (req, res) => {
-  Recipe.find({category:'Greek'}, (err, showCuisine)=>{
-    res.render('dishes.ejs', {recipe: showCuisine})
-  })
-})
-app.get('/mexican' , (req, res) => {
-  Recipe.find({category:'Mexican'}, (err, showCuisine)=>{
-    res.render('dishes.ejs', {recipe: showCuisine})
-  })
-})
-app.get('/vietnamese' , (req, res) => {
-  Recipe.find({category:'Vietnamese'}, (err, showCuisine)=>{
-    if(err){
-      console.log(err)
-    }else{
-    res.render('dishes.ejs', {recipe: showCuisine})
-    }
-  })
-})
+// app.get('/thai' , (req, res) => {
+//   Recipe.find({category:'Thai'}, (err, showCuisine)=>{
+//     res.render('dishes.ejs', {recipe: showCuisine})
+//   })
+// })
+// app.get('/korean' , (req, res) => {
+//   Recipe.find({category:'Korean'}, (err, showCuisine)=>{
+//     res.render('dishes.ejs', {recipe: showCuisine})
+//   })
+// })
+// app.get('/chinese' , (req, res) => {
+//   Recipe.find({category:'Chinese'}, (err, showCuisine)=>{
+//     res.render('dishes.ejs', {recipe: showCuisine})
+//   })
+// })
+// app.get('/american' , (req, res) => {
+//   Recipe.find({category:'American'}, (err, showCuisine)=>{
+//     res.render('dishes.ejs', {recipe: showCuisine})
+//   })
+// })
+// app.get('/japanese' , (req, res) => {
+//   Recipe.find({category:'Japanese'}, (err, showCuisine)=>{
+//     res.render('dishes.ejs', {recipe: showCuisine})
+//   })
+// })
+// app.get('/spanish' , (req, res) => {
+//   Recipe.find({category:'Spanish'}, (err, showCuisine)=>{
+//     res.render('dishes.ejs', {recipe: showCuisine})
+//   })
+// })
+// app.get('/greek' , (req, res) => {
+//   Recipe.find({category:'Greek'}, (err, showCuisine)=>{
+//     res.render('dishes.ejs', {recipe: showCuisine})
+//   })
+// })
+// app.get('/mexican' , (req, res) => {
+//   Recipe.find({category:'Mexican'}, (err, showCuisine)=>{
+//     res.render('dishes.ejs', {recipe: showCuisine})
+//   })
+// })
+// app.get('/vietnamese' , (req, res) => {
+//   Recipe.find({category:'Vietnamese'}, (err, showCuisine)=>{
+//     if(err){
+//       console.log(err)
+//     }else{
+//     res.render('dishes.ejs', {recipe: showCuisine})
+//     }
+//   })
+// })
 //___________________________
 //SHOW RECIPES_______________________
 
-app.get('/:_id' , (req, res) => {
-  Recipe.findById(req.params._id, (err, idRecipe)=>{
-    if (req.params._id === "favicon.ico") {
-      return res.status(404)
-    }else{
-    res.render('show.ejs', {recipe: idRecipe})
-    }
-  })
-})
+// app.get('/:_id' , (req, res) => {
+//   Recipe.findById(req.params._id, (err, idRecipe)=>{
+//     if (req.params._id === "favicon.ico") {
+//       return res.status(404)
+//     }else{
+//     res.render('show.ejs', {recipe: idRecipe})
+//     }
+//   })
+// })
 //___________________________
 //EDIT_______________________
-app.get('/:id/edit', (req, res)=>{
-  Recipe.findById(req.params.id, (err, currentRecipe)=>{
-    res.render('edit.ejs', {recipe: currentRecipe})
-  })
-})
-app.put('/:id/edit', (req, res)=>{
-  req.body
-  Recipe.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedItem)=>{
+// app.get('/:id/edit', (req, res)=>{
+//   Recipe.findById(req.params.id, (err, currentRecipe)=>{
+//     res.render('edit.ejs', {recipe: currentRecipe})
+//   })
+// })
+// app.put('/:id/edit', (req, res)=>{
+//   req.body
+//   Recipe.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedItem)=>{
   
-    res.redirect('/')
+//     res.redirect('/')
 
-  })
-})
+//   })
+// })
 
 
 //////////DELETE
 
-app.delete('/:id', (req, res)=>{
-    Recipe.findByIdAndRemove(req.params.id, (err, data)=>{
-        res.redirect('/');//redirect back home
-    })
-})
+// app.delete('/:id', (req, res)=>{
+//     Recipe.findByIdAndRemove(req.params.id, (err, data)=>{
+//         res.redirect('/');
+//     })
+// })
 
 
 

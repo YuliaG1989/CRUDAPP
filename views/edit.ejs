@@ -10,13 +10,18 @@
     </header>
     
            <div>
-            <h1>Edit</h1>
-               <form class ="create" action="/<%=recipe.id%>/edit?_method=PUT" method="POST">
+            
+            <div class="container">
+                <h1>Edit</h1> 
+            <form  class="form-label"  action ="/<%=recipe._id%>?_method=DELETE" method="POST">
+                <input class ="btn btn-outline-secondary" type="submit" value="Delete This Recipe"/>
+            </form>
+               <form  action="/<%=recipe._id%>?_method=PUT" method="POST">
                    <label class="form-label">Name</label>
                    <div class="col-sm-6">
                    <input type ="text" name="name"class="form-control" value ="<%=recipe.name%>"></br>
                 </div>
-                   <label  class="form-label">Image</label><input type="file" class="form-control-file" id="formFileMultiple" multiple name="image" value ="<%=recipe.image%>"></br>
+                   <label  class="form-label">Image</label><input type="file" class="form-control" accept="image/*" name="image" value ="<%=recipe.image%>"></br>
                    <label class="form-label">Category</label>
             <select type ="text" name="category" class="form-select" value ="">
                 <option selected>Select Category</option>
@@ -35,9 +40,8 @@
                  <input class="btn btn-outline-secondary" type = submit name ="" value = Confirm >
                </form>
            </div>
-           <form class="form-label"  action ="/<%=recipe._id%>?_method=DELETE" method="POST">
-            <input class ="btn btn-outline-secondary" type="submit" value="DELETE"/>
-        </form>
+          
+    </div>
            <%- include('./partials/footer.ejs') %>
         </body>
     </html>
