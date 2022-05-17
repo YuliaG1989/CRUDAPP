@@ -8,16 +8,17 @@
         <header>
             <%- include ('./partials/header.ejs') %>
         </header>
-        <div class = "dish">
+
+     
 <% for(let j = 0; j<recipe.length; j++) {%>
-      
+    
        <h4> <%=recipe[j].name%></h4>
         <a href = "/<%=recipe[j].id%>"><img src=<%=recipe[j].image%>></img></a>
   
 <%}%>
-</div>
 
 
 
+<%- include('./partials/footer.ejs') %>
     </body>
 </html>

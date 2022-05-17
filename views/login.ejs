@@ -6,32 +6,37 @@
         
     </head>
     <body>
+        <style>
+            .login{
+                margin-bottom: 300px;
+            }
+        </style>
         <%- include ('./partials/header.ejs') %>
         <div class ="login">
  <h3>Login to make changes.</h3>
     <form action="/login" method="POST">
-        <label>Your name/username</label>
-        <input type="text" name="username" placeholder="username">
-        <label>Your password</label>
+        <label  class="form-label">Your name/username</label>
+        <input type="text" name="username" placeholder="username"></br>
+        <label  class="form-label">Your password</label>
         <input type="password" name="password" placeholder="password">
 
-        <button>LOGIN</button>
+        <button class="btn btn-outline-secondary">LOGIN</button>
     </form>
      <h4>Or</h4>
      <p><h3>Create an account</h3></p>
 <form action="/register" method="POST">
-    <label>Your name/username</label>
-    <input type="text" name="username" placeholder="username">
-    <label>Email</label>
-    <input type ="email" name="email" placeholder="email">
-    <label>Your password</label>
+    <label  class="form-label">Your name/username</label>
+    <input type="text" name="username" placeholder="username"></br>
+    <label  class="form-label">Email</label>
+    <input type ="email" name="email" placeholder="email"></br>
+    <label  class="form-label">Your password</label>
+    <input type="password" name="password"placeholder="password"></br>
+    <label  class="form-label">Confirm your password</label>
     <input type="password" name="password"placeholder="password">
-    <label>Confirm your password</label>
-    <input type="password" name="password"placeholder="password">
-    <button>Submit</button>
+    <button class="btn btn-outline-secondary">Submit</button>
 </form>
 </div>
 
-    <footer><p>Created by Yulia</p></footer>
+<%- include('./partials/footer.ejs') %>
 </body>
     </html>

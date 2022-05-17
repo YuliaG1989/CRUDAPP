@@ -12,10 +12,13 @@
            <div>
             <h1>Edit</h1>
                <form class ="create" action="/<%=recipe.id%>/edit?_method=PUT" method="POST">
-                   <label>Name</label><input type ="text" name="name" value ="<%=recipe.name%>"></br>
-                   <label>Image</label><input type ="url" name="image" value ="<%=recipe.image%>"></br>
-                   <label>Category</label>
-            <select type ="text" name="category" value ="">
+                   <label class="form-label">Name</label>
+                   <div class="col-sm-6">
+                   <input type ="text" name="name"class="form-control" value ="<%=recipe.name%>"></br>
+                </div>
+                   <label  class="form-label">Image</label><input type="file" class="form-control-file" id="formFileMultiple" multiple name="image" value ="<%=recipe.image%>"></br>
+                   <label class="form-label">Category</label>
+            <select type ="text" name="category" class="form-select" value ="">
                 <option selected>Select Category</option>
                 <option value = "Korean">Korean</option>
                 <option value = "Thai">Thai</option>
@@ -26,11 +29,12 @@
                 <option value = "Spanish">Spanish</option>
                 <option value = "Greek">Greek</option>
             </select></br>
-            <label>Ingredients</label><textarea type ="text" name="ingredients" value =""></textarea></br>
-            <label>Instructions</label><textarea type ="text" name="instructions" value =""></textarea></br>
+            <label class="form-label">Ingredients</label><textarea type ="text" name="ingredients" class="form-control" value =""><%=recipe.ingredients%></textarea></br>
+            <label class="form-label">Instructions</label><textarea type ="text" name="instructions"class="form-control" value =""><%=recipe.instructions%></textarea></br>
                   
-                <input type = submit name ="" value = Submit>
+                 <input class="btn btn-outline-secondary" type = submit name ="" value = Submit>
                </form>
            </div>
+           <%- include('./partials/footer.ejs') %>
         </body>
     </html>
