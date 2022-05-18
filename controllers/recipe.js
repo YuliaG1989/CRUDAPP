@@ -7,31 +7,10 @@ const express = require('express');
 const router = express.Router();
 const Categories = require('../models/schema.js');
 const Recipe = require('../models/recipeSchema.js')
-const Login = require('../models/userSchema.js')
+const Login = require('../models/login.js')
 const categoriesSeed = require('../models/seed.js')
 const recipeSeed = require('../models/recipeSeed.js')
-const users =[]
-const bcrypt = require('bcrypt')
-const passport = require('passport')
-const passportInitialize= require('../passport-config.js')
-passportInitialize(passport, email =>{
-  return users.find( user => user.email === email),
-  id => users.find( user => user.id === id)
-})
-const flash = require('express-flash')
-const session = require('express-session')
 
-
-router.use(flash())
-router.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false
-}))
-
-
-router.use(passport.initialize())
-router.use(passport.session())
 // Routes
 //___________________
 //localhost:3000
@@ -46,49 +25,18 @@ router.get('/new', (req, res)=>{
     Recipe.create(req.body)
     res.redirect('/')
   })
-  //////////////LOGIN & REGISTER
-  router.post('/register', async (req,res)=>{
-    try{
-      const hashedPassword = await bcrypt.hash(req.body.password, 10)
-      Login.insert({
-        name: req.body.name,
-        email: req.body.email,
-        password: hashedPassword
-      })
-      res.redirect('/login')
-    } catch{
-      res.redirect('/register')
-    }
-    console.log(users)
-  })
+
+
   router.get('/register', (req,res)=>{
     res.render('register.ejs')
-  })
-  router.post('/login', (req,res)=>{
-    passport.authenticate('local', {
-      successRedirect: '/',
-      failureRedirect: '/login',
-      failureFlash: true
-    })
-
   })
   router.get('/login', (req,res)=>{
     res.render('login.ejs')
   })
-  
-  function checkAuthenticated (req, res, next) {
-    if (req.isAuthenticated()){
-      return next()
-    }
-    res.redirect('/')
-  }
-
-  function checkNotAuthenticated (req, res, next) {
-    if (req.isAuthenticated()){
-      res.redirect('/login')
-    }
     
-  }
+        // ________________________
+  //SEED________________________
+    // }
   // Categories.create(categoriesSeed, (err, data)=>{
   //   console.log(data)
   // })
@@ -105,15 +53,14 @@ router.get('/new', (req, res)=>{
   //   console.log(data)
   //   }
   // })
-  // ___________________________
-  //SEED________________________
+  // ___
   
-  // router.get('/seed', (req,res)=>{
-  //   Recipe.create(categoriesSeed, (err, data)=>{
+  router.get('/seed', (req,res)=>{
+    Recipe.create(categoriesSeed, (err, data)=>{
    
-  //   })
-  //   res.redirect('/')
-  // })
+    })
+    res.redirect('/')
+  })
   
   
   

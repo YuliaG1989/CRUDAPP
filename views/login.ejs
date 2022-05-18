@@ -14,10 +14,7 @@
         <%- include ('./partials/header.ejs') %>
         <div class ="login">
  <h3>Login to make changes.</h3>
- <% if(messages.error) {%>
-    <%=message.error%>
 
-<%}%>
     <form action="/login" method="POST">
         <label  class="form-label">Your name/username</label>
         <input type="text" name="username" placeholder="username"></br>
@@ -26,7 +23,10 @@
 
         <button class="btn btn-outline-secondary">LOGIN</button>
     </form>
-     
+     <div class ='container'>
+         <h3>Don't have an account?</h3>
+         <a href='/register'> <p class ="btn btn-outline-secondary">Create one!</p></a>
+     </div>
 </div>
 
 <%- include('./partials/footer.ejs') %>

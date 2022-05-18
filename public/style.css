@@ -95,3 +95,20 @@ footer{
     position: absolute;
     font-size: 30px;
 } */
+/* .burger{
+    display: none;
+} */
+@media only  screen and (max-width: 1000px){
+    /* .burger{
+        display: block;
+        border: 0;
+        color:black;
+        font-size: 30px;
+    } */
+
+    nav ul li{
+        font-size: 15px !important;
+        justify-content: end !important;
+        flex-wrap: nowrap !important;
+    }
+}
