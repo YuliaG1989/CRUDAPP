@@ -1,8 +1,8 @@
 const mongoose =require('mongoose')
 
 const loginSchema = new mongoose.Schema({
-    name: { type: String, unique: true, required: true },
-    email: String,
+    
+    email: { type: String, unique: true, required: true },
     password: String
   
 

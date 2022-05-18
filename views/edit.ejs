@@ -21,10 +21,10 @@
                    <div class="col-sm-6">
                    <input type ="text" name="name"class="form-control" value ="<%=recipe.name%>"></br>
                 </div>
-                   <label  class="form-label">Image</label><input type="file" class="form-control" accept="image/*" name="image" value ="<%=recipe.image%>"></br>
+                   <label  class="form-label">Image</label><input class="form-control" accept="image/*" name="image" value ="<%=recipe.image%>"></br>
                    <label class="form-label">Category</label>
             <select type ="text" name="category" class="form-select" value ="">
-                <option selected>Select Category</option>
+                <option selected><%=recipe.category%></option>
                 <option value = "Korean">Korean</option>
                 <option value = "Thai">Thai</option>
                 <option value = "Mexican">Mexican</option>

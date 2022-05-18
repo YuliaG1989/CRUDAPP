@@ -12,13 +12,13 @@
 
        <div class = "container">
         <h1>Create</h1>
-        <form action="/new" method="POST">
+        <form action="/new" " method="POST" >
             <label class="form-label">Name</label>
                    <div class="col-sm-6">
                    <input type ="text" name="name"class="form-control" value =""></br>
                 </div>
-                   <label  class="form-label">Image</label><input type="file" class="form-control" accept="image/*"name="image" value =""></br>
-                   <label class="form-label">Category</label>
+                <label  class="form-label">Image</label><input class ="form-control" type="url" id="image" name="image" accept="image/*"></br>
+                <label class="form-label">Category</label>
             <select type ="text" name="category" class="form-select" value ="">
                 <option selected>Select Category</option>
                 <option value = "Korean">Korean</option>

@@ -12,14 +12,20 @@
             }
         </style>
         <%- include ('./partials/header.ejs') %>
+
+        <%if (messages.error) {%>
+            <%=messages.error%>
+        <%} %>
         <div class ="login">
  <h3>Login to make changes.</h3>
 
     <form action="/login" method="POST">
-        <label  class="form-label">Your name/username</label>
-        <input type="text" name="username" placeholder="username"></br>
-        <label  class="form-label">Your password</label>
-        <input type="password" name="password" placeholder="password">
+        <label for ="name"  class="form-label">Your name/username</label>
+    <input type="text" name="name" id="name" required></br>
+        <!-- <label for="email"  class="form-label">Email</label>
+        <input type ="email" name="email" id="email" required></br> -->
+        <label for="password"  class="form-label">Your password</label>
+        <input type="password" id="password" name="password" placeholder="password">
 
         <button class="btn btn-outline-secondary">LOGIN</button>
     </form>

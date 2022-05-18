@@ -1203,9 +1203,79 @@ module.exports = [
         "3 pounds boneless leg of lamb, cut into 1 1/2-inch cubes"
       ],
       instructions: "Combine wine, olive oil. lemon juice, garlic and parsley. Add lamb and toss to coat well. Cover and set aside to marinate, refrigerated, for 8 hours. Preheat grill or broiler to high. Drain lamb, reserving marinade in a small bowl. Pat meat dry with paper towels and spear 5 pieces on each metal skewer. Season generously with salt, pepper and marjoram and grill 10 to 15 minutes, basting several times with marinade, until well-browne;"
- }
+ },
+ {
+     name: "Selyodka Pod Shuboy Or Shuba (Dressed Herring)",
+     image:"https://www.lacademie.com/wp-content/uploads/2022/01/dressed-herring-1.jpg",
+     category: "Russian",
+     ingredients: [
+         'Herring fillets in oil 3-4 fillets about 400g',
+       '3 large beets peeled',
+        '3 large potatoes peeled',
+        '1 ½ cups mayonnaise',
+        '2 large carrots peeled',
+        '½ white onion chopped (use less onion if you prefer)',
+        '2 hard boiled eggs',
+       'salt and pepper',
+        'dill to garnish optional',
+    
+    ],
+     instructions: "In a saucepan, boil the peeled potatoes and carrots for about 20 minutes, or until they are soft. Allow to cool and set aside.In a separate saucepan, boil the peeled beets for about 45 minutes until they are soft. The time will depend on the size of the beets. Allow to cool and set aside.Cook the eggs until they are hard boiled, for about 10 minutes. Allow to cool, peel, and set aside.Slice the herring fillets into small bite size pieces (cubed or diced). Set aside.Finely dice the white onion. Set aside. If you are using yellow onions which have a sharp bite, put them in boiling water for 2 minutes then strain before using. This will reduce the bite of the yellow onions.On a serving platter, springform pan or glass deep dish, start to layer your ingredients.Grate 1 peeled potato over the dish and evenly spread across the entire base.Add the finely chopped onion, spread evenly over the grated potato. Put the chopped herring evenly over the onions. Add a few tablespoons of mayonnaise, using the back of the spoon to thinly spread across the dish, pressing into the herring. Grate the remaining potatoes over the mayonnaise mixture and evenly layer across the dish. Sprinkle salt and pepper to taste. Grate the carrots over the potatoes and lightly cover with another layer of mayonnaise.Finally, grate the beets evenly spread over the carrot mayo layer, and cover with the remaining mayonnaise.Grate the eggs over the entire Shuba salad. Keep refrigerated until you are ready to serve. Best prepared the day before serving, but allow at least 3 hours in the fridge so the entire salad has had time to chill.Garnish with chopped dill before serving."
+ },
 
+ {
+    name: "Janjetina Ispod Peke (Croatian Lamb Stew)",
+    image: "https://www.lacademie.com/wp-content/uploads/2022/02/janjetina-ispod-peke.jpg",
+    category: "Croatian",
+    ingredients: [
 
+    '600 grams Potatoes (1.3lb) waxy potatoes (we used charlotte potatoes)',
+    '1 Courgette chopped chunky',
+    '1 Carrot large chopped',
+    '1 Pepper green chopped chunky',
+    '1 small Aubergine chopped chunky',
+    '1 large Onion chopped chunky',
+   '850 gram Diced lamb (1.8lb) shoulder or leg of lamb (deboned and cut into nice size chunks)',
+    '1 tablespoon Gia Garlic Puree or finely chopped fresh garlic',
+    '1 tablespoon Gia Sundried Tomato Puree or tomato puree',
+    '80 ml Olive oil (⅓ cup) + extra 2 tablespoon for the last step',
+    'Thyme, rosemary and sage you can choose other fresh herbs you like',
+    '250 ml White wine (1 cup)',
+    'Black pepper and salt seasoning'
+    ],
+    instructions: "Preheat oven to 200°C fan / 220°C / 425°F / Gas mark 7. If you have not bought diced lamb, cut your lamb shoulder or leg into large chunks and place to one side.Make oil marinade. Mix 80ml of olive oil in a bowl with garlic puree, sundried tomato puree ,black pepper and salt.Add potatoes and vegetables into a large lidded casserole dish.Place diced lamb on top of the vegetables, pour the marinade and wine over the top.Add the rosemary, thyme and sage, trying to keep the herbs on top. Place lid on the casserole dish and cook for 1hr 30 minute.Take the lid off, remove any thick herb stems. Stir in 2 tablespoon of olive oil."
+},
 
+{
+    name: "Khinkali",
+    image:"https://images.squarespace-cdn.com/content/v1/5e0a384845deef2566757c89/1583597752499-6CSD0FQZV9B30YFZNRVW/988A2004.jpg",
+    category: "Georgian",
+    ingredients: [
+        'DOUGH',
+        '2 cups all-purpose flour (about 8½ ounces), plus more for work surface',
+        '½ teaspoon fine sea salt',
+        '½ cup water',
+        '1 large egg, beaten',
+        'Olive oil, for greasing',
+        'MEAT FILLING',
+        '4 ounces 80% lean ground beef',
+        '4 ounces ground pork',
+        '¾ cup water',
+       '⅓ cup finely chopped yellow onion',
+        '2 tablespoons finely chopped fresh cilantro',
+        '2 tablespoons unsalted butter, melted',
+        '1 teaspoon fine sea salt',
+        '¼ teaspoon dried kondari (summer savory) or mild thyme',
+        '¼ teaspoon coriander seeds, crushed',
+        '¼ teaspoon caraway seeds, finely chopped',
+        '¼ teaspoon freshly ground black pepper, plus more for serving',
+        '¼ teaspoon crushed red pepper, or to taste',
+        '⅛ teaspoon ground cumin',
+       '1 garlic clove, finely chopped',
+        'ADDITIONAL INGREDIENTS',
+        '2 fresh bay leaves',
+    ],
+    instructions: "Stir together flour and salt in a medium bowl. Make a well in center of dry ingredients, and add ½ cup water and egg. Stir with a wooden spoon until a shaggy dough forms. Turn dough out onto a lightly floured surface, and knead until smooth and elastic, 4 to 5 minutes. Place dough in a lightly oiled bowl, and cover loosely with plastic wrap. Set aside. Using a fork or your hands, stir together all meat filling ingredients in a large bowl until ground meat is completely broken up and mixture is well blended.Divide dough into thirds. Shape 1 dough portion into a ball, and roll out to about ¼-inch thickness on a lightly floured work surface. (Keep the remaining dough portions covered with plastic wrap while you work.) Using a 2½-inch round cutter, cut out 8 dough circles, rerolling dough scraps as necessary. Roll each dough circle into a larger 4-inch circle. Place about 1 tablespoon (about ½ ounce) meat filling in center of each dough circle, and pleat dough edge, gathering top like a pouch to enclose filling. When you have pleated all the way around, pinch top edges together firmly, and give the dough a little twist to make a stem and to make sure the khinkali is well sealed. (If you don’t want the stems, lightly press the twisted stem down into the dumpling with your finger.) Place finished dumplings on a piece of lightly floured parchment paper; cover loosely with plastic wrap, and repeat process with remaining dough portions and filling. Bring a large pot of salted water and bay leaves to a boil over high. Carefully add half of dumplings to water, and stir gently with a wooden spoon (without piercing dumplings) to make sure they don’t stick to bottom of pot. Boil until dough is tender and meat is cooked through, 8 to 10 minutes. Remove khinkali with a spider, and drain on paper towels. Repeat with remaining half of dumplings. Sprinkle khinkali with black pepper, and serve hot"
+}
 
 ]

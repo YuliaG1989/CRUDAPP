@@ -1,7 +1,3 @@
-if(process.env.NODE_ENW !== 'production'){
-  require('dotenv').config()
-}
-
 
 const express = require('express');
 const router = express.Router();
@@ -10,6 +6,12 @@ const Recipe = require('../models/recipeSchema.js')
 const Login = require('../models/login.js')
 const categoriesSeed = require('../models/seed.js')
 const recipeSeed = require('../models/recipeSeed.js')
+const bcrypt = require('bcrypt')
+
+// initializePassport(passport, email =>{
+//   return Login.find(user => user.email === email),
+//    id =>  Login.find(user => user.id === id)
+//  })
 
 // Routes
 //___________________
@@ -25,18 +27,59 @@ router.get('/new', (req, res)=>{
     Recipe.create(req.body)
     res.redirect('/')
   })
-
+  
+//___________________________
+//REGISTER/LOGIN_____________
+  router.get('/login', (req,res)=>{
+    res.render('login.ejs', {currentUser:req.session.currentUser})
+  })
 
   router.get('/register', (req,res)=>{
     res.render('register.ejs')
   })
-  router.get('/login', (req,res)=>{
-    res.render('login.ejs')
+
+  router.post('/login', (req,res)=>{
+    Login.findOne({email: req.body.email}, (err, foundEmail)=>{
+      if (err) {
+        console.log(err)
+        res.send('oops the db had a problem')
+      } else if (!foundEmail) {
+        res.send('<a  href="/">Sorry, no user found </a>')
+      } else {
+        if (bcrypt.compareSync(req.body.password.toString(), foundEmail.password.toString())) {
+          req.session.currentUser = foundEmail
+          res.redirect('/')
+        } else {
+          res.send('<a href="/"> password does not match </a>')
+        }
+      }
+    })
   })
+ 
+  router.delete('/', (req, res) => {
+    req.session.destroy(() => {
+      res.redirect('/')
+    })
+  })
+  
+
+  router.post('/register', (req, res)=>{
     
-        // ________________________
+    const hashedPassword = bcrypt.hashSync(req.body.password.toString(), bcrypt.genSaltSync(10))
+      Login.create({name: req.body.name, email: req.body.email, password: hashedPassword}, (err, newUser)=>{
+       if (err){
+         console.log(err)
+       }else{
+         console.log(newUser)
+       }
+      })
+      res.redirect('/login')
+    })
+  
+  // ________________________
   //SEED________________________
-    // }
+
+  
   // Categories.create(categoriesSeed, (err, data)=>{
   //   console.log(data)
   // })
@@ -46,6 +89,8 @@ router.get('/new', (req, res)=>{
   //   })
   //   res.redirect('/')
   // })
+
+
   // Recipe.create(recipeSeed, (err, data)=>{
   //   if(err){
   //     console.log(err)
@@ -53,22 +98,25 @@ router.get('/new', (req, res)=>{
   //   console.log(data)
   //   }
   // })
-  // ___
+
   
-  router.get('/seed', (req,res)=>{
-    Recipe.create(categoriesSeed, (err, data)=>{
+  // router.get('/seed', (req,res)=>{
+  //   Recipe.create(categoriesSeed, (err, data)=>{
    
-    })
-    res.redirect('/')
-  })
+  //   })
+  //   res.redirect('/')
+  // })
   
   
+ //____DROP 'EM COLLECTIONS_______ 
   
   
-  // Recipe.collection.drop()
+// Recipe.collection.drop()
   
-  // Categories.collection.drop()
-  
+// Categories.collection.drop()
+
+
+ //_______________________________ 
   
   
   //___________________________
@@ -140,6 +188,21 @@ router.get('/new', (req, res)=>{
       }
     })
   })
+  router.get('/russian' , (req, res) => {
+    Recipe.find({category:'Russian'}, (err, showCuisine)=>{
+      res.render('dishes.ejs', {recipe: showCuisine})
+    })
+  })
+  router.get('/croatian' , (req, res) => {
+    Recipe.find({category:'Croatian'}, (err, showCuisine)=>{
+      res.render('dishes.ejs', {recipe: showCuisine})
+    })
+  })
+  router.get('/georgian' , (req, res) => {
+    Recipe.find({category:'Georgian'}, (err, showCuisine)=>{
+      res.render('dishes.ejs', {recipe: showCuisine})
+    })
+  })
   //___________________________
   //SHOW RECIPES_______________________
   
@@ -172,7 +235,8 @@ router.get('/new', (req, res)=>{
   })
  
   
-  //////////DELETE
+  //___________________________
+  //DELETE_____________________
   
   router.delete('/:id', (req, res)=>{
       Recipe.findByIdAndRemove(req.params.id, (err, data)=>{

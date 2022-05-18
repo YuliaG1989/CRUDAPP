@@ -42,5 +42,22 @@ module.exports = [
 {   name: 'Vietnamese',
     image: 'https://images.unsplash.com/photo-1503764654157-72d979d9af2f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80',
     intro: "Vietnamese cooking has often been characterised with using fresh ingredients, not much use of dairy nor oil, interesting textures, and the use of herbs and vegetables."
+},
+{
+    name: "Russian",
+    image: "https://www.lacademie.com/wp-content/uploads/2022/01/russian-trip-foods.jpg",
+    intro: "Na Zdorovie! The national Russian cuisine has evolved in a multicultural and multiethnic state, with strong mutual influence from the cuisines of other ethnic groups that live within the nation's borders or had been a part of the Russian state historically."
+},
+
+{
+    name: "Croatian",
+    image: "https://www.lacademie.com/wp-content/uploads/2022/02/croatian-dish.jpg",
+    intro: "Croatian cuisine combines long-standing traditions with significant influences from Italian, Hungarian, Turkish cuisines, and some others. After all, a distinct culinary culture has emerged and flourished through time."
+
+},
+{
+    name: "Georgian",
+    image:"https://www.travelinsightpedia.com/wp-content/uploads/2020/11/georgian-cuisine-food-set-georgian-restaurant_179755-2597.jpg",
+    intro:"Georgia was one of the countries on the Silk Road, which resulted in travelers influencing Georgian cuisine. The Georgian love of family and friends is one of the reasons why the supra (tablecloth) is so important in Georgia. Supra is offered spontaneously to relatives, friends or guests. Every supra has its tamada (toastmaster), who gives the toast and entertains the guests."
 }
 ]
