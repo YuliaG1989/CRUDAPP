@@ -13,17 +13,17 @@
          
 
 <div class ="container"> 
-<div class="row">   
-    <img class ="col-md-6" style="max-width: 40%;" src = "<%=recipe.image%>"></img>
+<div class="row"> 
+    <div class ="col-sm-12 col-md-6 col-lg-6">
+    <img style="max-width: 70%;" src = "<%=recipe.image%>"></img>
     <h2><%=recipe.name%></h2>
     <a href="/<%=recipe._id%>/edit"> <div class ="btn btn-outline-secondary">Edit</div></a>   
 
+    <li><b>Cuisine:</b><%=recipe.category%></li>
+</div> 
 
-    
-   
-    <li>Cuisine:<%=recipe.category%></li>
-    <div class ='col'>
-    <p>Ingredients</p>
+    <div class ="col-sm-12 col-md-6 col-lg-6">
+    <p><b>Ingredients</b></p>
     
 <ul>
     <li><%=recipe.ingredients[0]%></li>
@@ -46,7 +46,7 @@
     <li><%=recipe.ingredients[17]%></li>
     <li><%=recipe.ingredients[18]%></li>
     </ul>
-<p>Instructions</p>
+<p><b>Instructions</b></p>
     <p><%=recipe.instructions%></p>
 </div>
 </div>

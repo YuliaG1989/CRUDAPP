@@ -19,4 +19,22 @@
 
 1. Researched more about bootstrap.
 2. Learned how to use css within html using bootstrap.
+3. Created controllers.
+4. Created partials. 
+5. Bugs
+6. Creating random recipe page. 
 
+
+# Day 4
+
+1. Working on styling
+2. Debugging
+3. Fixing Category schema. Adding more content.
+3. Starting on register/login
+4. Cant get register/login to work.
+
+# Day 5
+
+Final touches.
+Still working on register/log in
+Bugs
