@@ -5,9 +5,57 @@ const Categories = require('../models/schema.js');
 const Recipe = require('../models/recipeSchema.js')
 const categoriesSeed = require('../models/seed.js')
 const recipeSeed = require('../models/recipeSeed.js')
+const Login = require('../models/login.js')
+const bcrypt = require('bcrypt')
 
 
+router.get('/register', (req, res) => {
+  res.render('register.ejs', { currentUser: req.session.currentUser })
+})
 
+router.post('/login', (req, res) => {
+ 
+  req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
+  Login.create(req.body, (err, createdUser) => {
+    console.log('user is created', createdUser)
+    res.redirect('/')
+  })
+})
+
+router.get('/login', (req, res) => {
+  res.render('login.ejs', { currentUser: req.session.currentUser })
+})
+
+
+router.post('/login', (req, res) => {
+  Login.findOne({ name: req.body.name }, (err, foundUser) => {
+     
+      if (err) {
+        console.log(err)
+        res.send('oops the db had a problem')
+      } else if (!foundUser) {
+      
+        res.send('<a  href="/">Sorry, no user found </a>')
+      } else {
+      
+        if (bcrypt.compareSync(req.body.password, foundUser.password)) {
+       
+          req.session.currentUser = foundUser
+       
+          res.redirect('/')
+        } else {
+      
+          res.send('<a href="/"> password does not match </a>')
+        }
+      }
+    })
+  })
+
+  router.delete('/login', (req, res) => {
+    req.session.destroy(() => {
+      res.redirect('/')
+    })
+  })
 // Routes
 //___________________
 //localhost:3000
