@@ -3,15 +3,10 @@ const express = require('express');
 const router = express.Router();
 const Categories = require('../models/schema.js');
 const Recipe = require('../models/recipeSchema.js')
-const Login = require('../models/login.js')
 const categoriesSeed = require('../models/seed.js')
 const recipeSeed = require('../models/recipeSeed.js')
-const bcrypt = require('bcrypt')
 
-// initializePassport(passport, email =>{
-//   return Login.find(user => user.email === email),
-//    id =>  Login.find(user => user.id === id)
-//  })
+
 
 // Routes
 //___________________
@@ -30,38 +25,7 @@ router.get('/new', (req, res)=>{
   
 //___________________________
 //REGISTER/LOGIN_____________
-  router.get('/login', (req,res)=>{
-    res.render('login.ejs', {currentUser:req.session.currentUser})
-  })
 
-  router.get('/register', (req,res)=>{
-    res.render('register.ejs')
-  })
-
-  router.post('/login', (req,res)=>{
-    Login.findOne({email: req.body.email}, (err, foundEmail)=>{
-      if (err) {
-        console.log(err)
-        res.send('oops the db had a problem')
-      } else if (!foundEmail) {
-        res.send('<a  href="/">Sorry, no user found </a>')
-      } else {
-        if (bcrypt.compareSync(req.body.password.toString(), foundEmail.password.toString())) {
-          req.session.currentUser = foundEmail
-          res.redirect('/')
-        } else {
-          res.send('<a href="/"> password does not match </a>')
-        }
-      }
-    })
-  })
- 
-  router.delete('/', (req, res) => {
-    req.session.destroy(() => {
-      res.redirect('/')
-    })
-  })
-  
 
   router.post('/register', (req, res)=>{
     
@@ -130,8 +94,7 @@ router.get('/new', (req, res)=>{
   //_______________________________________
   //SHOW RANDOM RECIPE_____________________
   router.get('/random', (req,res)=>{
-    // let count = Recipe.find().countDocuments()
-    // let random = Math.floor(Math.random * count)
+  
     Recipe.find({}, (err, randomRecipe)=>{
     res.render('random.ejs', {recipe: randomRecipe})
   })

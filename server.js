@@ -8,14 +8,6 @@ const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
 require('dotenv').config()
-const session = require('express-session')
-const flash = require('express-flash')
-// const passport =require('passport')
-// require('./passport-config')
-// initializePassport(passport, email =>{
-//   Login.find(user => user.email == email),
-//   id =>  Login.find(user => user.id == id)
-// })
 
 //___________________
 //Port
@@ -58,21 +50,10 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 
 
 
-// login & register
-app.use(flash())
-app.use(
-  session({
-    secret: process.env.SECRET, //a random string do not copy this value or your stuff will get hacked
-    resave: false, // default more info: https://www.npmjs.com/package/express-session#resave
-    saveUninitialized: false // default  more info: https://www.npmjs.com/package/express-session#resave
-  })
-)
-// app.use(passport.initialize())
-// app.use(passport.session())
+
+
 const recipeController = require('./controllers/recipe.js');
 app.use(recipeController);
-
-
 
 
 
