@@ -13,9 +13,9 @@ router.get('/register', (req, res) => {
   res.render('register.ejs', { currentUser: req.session.currentUser })
 })
 
-router.post('/login', (req, res) => {
+router.post('/register', (req, res) => {
  
-  req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
+  req.body.password = bcrypt.hashSync(req.body.password.toString(), 10)
   Login.create(req.body, (err, createdUser) => {
     console.log('user is created', createdUser)
     res.redirect('/')
@@ -28,7 +28,8 @@ router.get('/login', (req, res) => {
 
 
 router.post('/login', (req, res) => {
-  Login.findOne({ name: req.body.name }, (err, foundUser) => {
+  
+ Login.findOne({ email: req.body.email }, (err, foundUser) => {
      
       if (err) {
         console.log(err)
@@ -41,11 +42,11 @@ router.post('/login', (req, res) => {
         if (bcrypt.compareSync(req.body.password, foundUser.password)) {
        
           req.session.currentUser = foundUser
-       
+          
           res.redirect('/')
         } else {
-      
-          res.send('<a href="/"> password does not match </a>')
+          console.log(req.body.password, foundUser.password)
+          res.redirect('/')
         }
       }
     })
@@ -63,7 +64,14 @@ router.get('/new', (req, res)=>{
   })
   
   router.post('/new', (req, res)=>{
-    Recipe.create(req.body)
+    req.body.ingredients.split(',')
+    Recipe.create({
+       name: req.body.name,
+       image: req.body.image,
+       category: req.body.category,
+       ingredients: req.body.ingredients.split(','),
+       instructions: req.body.instructions
+    })
     res.redirect('/')
   })
   
@@ -71,18 +79,18 @@ router.get('/new', (req, res)=>{
 // //REGISTER/LOGIN_____________
 
 
-  router.post('/register', (req, res)=>{
+  // router.post('/register', (req, res)=>{
     
-    const hashedPassword = bcrypt.hashSync(req.body.password.toString(), bcrypt.genSaltSync(10))
-      Login.create({name: req.body.name, email: req.body.email, password: hashedPassword}, (err, newUser)=>{
-       if (err){
-         console.log(err)
-       }else{
-         console.log(newUser)
-       }
-      })
-      res.redirect('/login')
-    })
+  //   const hashedPassword = bcrypt.hashSync(req.body.password.toString(), bcrypt.genSaltSync(10))
+  //     Login.create({name: req.body.name, email: req.body.email, password: hashedPassword}, (err, newUser)=>{
+  //      if (err){
+  //        console.log(err)
+  //      }else{
+  //        console.log(newUser)
+  //      }
+  //     })
+  //     res.redirect('/login')
+  //   })
   
   // ________________________
   //SEED________________________
