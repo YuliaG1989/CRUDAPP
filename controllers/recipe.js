@@ -23,7 +23,7 @@ router.post('/register', (req, res) => {
 })
 
 router.get('/login', (req, res) => {
-  res.render('login.ejs', { currentUser: req.session.currentUser })
+  res.render('login.ejs')
 })
 
 
