@@ -5,51 +5,51 @@ const Categories = require('../models/schema.js');
 const Recipe = require('../models/recipeSchema.js')
 const categoriesSeed = require('../models/seed.js')
 const recipeSeed = require('../models/recipeSeed.js')
-// const Login = require('../models/login.js')
-// const bcrypt = require('bcrypt')
+const Login = require('../models/login.js')
+const bcrypt = require('bcrypt')
 
 
-// router.get('/register', (req, res) => {
-//   res.render('register.ejs', { currentUser: req.session.currentUser })
-// })
+router.get('/register', (req, res) => {
+  res.render('register.ejs', { currentUser: req.session.currentUser })
+})
 
-// router.post('/login', (req, res) => {
+router.post('/login', (req, res) => {
  
-//   req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
-//   Login.create(req.body, (err, createdUser) => {
-//     console.log('user is created', createdUser)
-//     res.redirect('/')
-//   })
-// })
+  req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
+  Login.create(req.body, (err, createdUser) => {
+    console.log('user is created', createdUser)
+    res.redirect('/')
+  })
+})
 
-// router.get('/login', (req, res) => {
-//   res.render('login.ejs', { currentUser: req.session.currentUser })
-// })
+router.get('/login', (req, res) => {
+  res.render('login.ejs', { currentUser: req.session.currentUser })
+})
 
 
-// router.post('/login', (req, res) => {
-//   Login.findOne({ name: req.body.name }, (err, foundUser) => {
+router.post('/login', (req, res) => {
+  Login.findOne({ name: req.body.name }, (err, foundUser) => {
      
-//       if (err) {
-//         console.log(err)
-//         res.send('oops the db had a problem')
-//       } else if (!foundUser) {
+      if (err) {
+        console.log(err)
+        res.send('oops the db had a problem')
+      } else if (!foundUser) {
       
-//         res.send('<a  href="/">Sorry, no user found </a>')
-//       } else {
+        res.send('<a  href="/">Sorry, no user found </a>')
+      } else {
       
-//         if (bcrypt.compareSync(req.body.password, foundUser.password)) {
+        if (bcrypt.compareSync(req.body.password, foundUser.password)) {
        
-//           req.session.currentUser = foundUser
+          req.session.currentUser = foundUser
        
-//           res.redirect('/')
-//         } else {
+          res.redirect('/')
+        } else {
       
-//           res.send('<a href="/"> password does not match </a>')
-//         }
-//       }
-//     })
-//   })
+          res.send('<a href="/"> password does not match </a>')
+        }
+      }
+    })
+  })
 
 
 // // Routes
@@ -58,31 +58,31 @@ const recipeSeed = require('../models/recipeSeed.js')
 
 // //___________________________
 // //NEW________________________
-// router.get('/new', (req, res)=>{
-//     res.render('new.ejs')
-//   })
+router.get('/new', (req, res)=>{
+    res.render('new.ejs')
+  })
   
-//   router.post('/new', (req, res)=>{
-//     Recipe.create(req.body)
-//     res.redirect('/')
-//   })
+  router.post('/new', (req, res)=>{
+    Recipe.create(req.body)
+    res.redirect('/')
+  })
   
 // //___________________________
 // //REGISTER/LOGIN_____________
 
 
-//   router.post('/register', (req, res)=>{
+  router.post('/register', (req, res)=>{
     
-//     const hashedPassword = bcrypt.hashSync(req.body.password.toString(), bcrypt.genSaltSync(10))
-//       Login.create({name: req.body.name, email: req.body.email, password: hashedPassword}, (err, newUser)=>{
-//        if (err){
-//          console.log(err)
-//        }else{
-//          console.log(newUser)
-//        }
-//       })
-//       res.redirect('/login')
-//     })
+    const hashedPassword = bcrypt.hashSync(req.body.password.toString(), bcrypt.genSaltSync(10))
+      Login.create({name: req.body.name, email: req.body.email, password: hashedPassword}, (err, newUser)=>{
+       if (err){
+         console.log(err)
+       }else{
+         console.log(newUser)
+       }
+      })
+      res.redirect('/login')
+    })
   
   // ________________________
   //SEED________________________
