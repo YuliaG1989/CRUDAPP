@@ -1248,7 +1248,7 @@ module.exports = [
 
 {
     name: "Khinkali",
-    image:"https://images.squarespace-cdn.com/content/v1/5e0a384845deef2566757c89/1583597752499-6CSD0FQZV9B30YFZNRVW/988A2004.jpg",
+    image:"https://odessa-journal.com/wp-content/uploads/2020/04/georgian-khinkali.jpg",
     category: "Georgian",
     ingredients: [
         'DOUGH',
