@@ -7,7 +7,8 @@ const categoriesSeed = require('../models/seed.js')
 const recipeSeed = require('../models/recipeSeed.js')
 const Login = require('../models/login.js')
 const bcrypt = require('bcrypt')
-
+const Comments = require('../models/comments.js')
+const commentSeed = require('../models/commentsSeed')
 
 router.get('/register', (req, res) => {
   res.render('register.ejs', { currentUser: req.session.currentUser })
@@ -15,7 +16,7 @@ router.get('/register', (req, res) => {
 
 router.post('/register', (req, res) => {
  
-  req.body.password = bcrypt.hashSync(req.body.password.toString(), 10)
+ req.body.password = bcrypt.hashSync(req.body.password.toString(), bcrypt.genSaltSync(10))
   Login.create(req.body, (err, createdUser) => {
     console.log('user is created', createdUser)
     res.redirect('/')
@@ -30,7 +31,7 @@ router.get('/login', (req, res) => {
 router.post('/login', (req, res) => {
   
  Login.findOne({ email: req.body.email }, (err, foundUser) => {
-     
+
       if (err) {
         console.log(err)
         res.send('oops the db had a problem')
@@ -39,13 +40,14 @@ router.post('/login', (req, res) => {
         res.send('<a  href="/">Sorry, no user found </a>')
       } else {
       
-        if (bcrypt.compareSync(req.body.password, foundUser.password)) {
+        if (bcrypt.compareSync(loginPassword, foundUser.password)) {
        
           req.session.currentUser = foundUser
           
           res.redirect('/')
         } else {
-          console.log(req.body.password, foundUser.password)
+          
+          console.log(foundUser, loginPassword, foundUser.password)
           res.redirect('/')
         }
       }
@@ -74,7 +76,19 @@ router.get('/new', (req, res)=>{
     })
     res.redirect('/')
   })
+   //___________________________
+  //COMMENTS GET________________
+// router.get('/comments', (err, res)=>{
+//   Comments.find({}, (err, comments)=>{
+//     res.render('show.ejs', {allComments : comments})
+//   })
   
+// })
+// router.post('/:_id', (req, res)=>{
+//   Comments.create(req.body, (err, comments)=>{
+//     res.render('show.ejs', {allComments : comments})
+//   })
+// })
 // //___________________________
 // //REGISTER/LOGIN_____________
 
@@ -95,7 +109,15 @@ router.get('/new', (req, res)=>{
   // ________________________
   //SEED________________________
 
-  
+  // Comments.create(commentSeed, (err, comments)=>{
+  //   console.log(comments)
+  // })
+  //   router.get('/seed', (req,res)=>{
+  //   Comments.create(commentSeed, (err, comments)=>{
+  //     res.send(comments)
+  //   })
+    
+  // })
   // Categories.create(categoriesSeed, (err, data)=>{
   //   console.log(data)
   // })
@@ -263,5 +285,7 @@ router.get('/new', (req, res)=>{
       })
   })
   
+
+
 
 module.exports = router;
