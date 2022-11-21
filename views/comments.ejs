@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <%- include ('./partials/head.ejs') %>
+    </head>
+    <body>
+     
+        <header>
+            <%- include ('./partials/header.ejs') %>
+            
+         </header>
+         
+
+<h1>Comments</h1>
+
+
+
+
+<form  action="/comments" method="POST">
+<div class="form-floating">
+    <input type="text" name="name" placeholder="name">
+    <textarea type="text" name="comment" placeholder="comment" class="form-control" id="floatingTextarea2" style="height: 100px"></textarea>
+    
+    <input class="btn btn-outline-secondary" type = submit name ="" value = submit>
+  </div>
+</form>
+<ol>
+<%for (let i=0; i<allComments.length; i++) {%>
+    <li><%=allComments[i].comment%></li>
+    
+    <%}%>
+</ol>
+<%- include('./partials/footer.ejs') %>
+    </body>
+</html>

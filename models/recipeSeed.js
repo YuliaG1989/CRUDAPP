@@ -89,7 +89,7 @@ module.exports = [
     },
     {
         name: "Mac'n'Cheese",
-        image: 'https://weelicious.com/imager/weelicious_com/uploads/Classic-Mac-and-Cheese-2_1b74faffbe944b0675f0e20473d3ad34.jpg',
+        image: '/images/mac.png',
         category:'American',
         ingredients:[
         '1 tablespoon butter, melted',

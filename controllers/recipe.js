@@ -261,15 +261,15 @@ router.get('/new', (req, res)=>{
 
    //___________________________
   //COMMENTS GET________________
-  // router.get('/:_id', (err, res)=>{
+  // router.get('/:_id/comments', (err, res)=>{
   //   Comments.find({}, (err, comments)=>{
-  //     res.render('show.ejs', {allComments : comments})
+  //     res.render('comments.ejs', {allComments : comments})
   //   })
     
   // })
-  // router.post('/:_id', (req, res)=>{
+  // router.post('/comments', (req, res)=>{
   //   Comments.create(req.body, (err, comments)=>{
-  //     res.redirect('/:_id')
+  //     res.redirect('/')
   //   })
   // })
   //___________________________
