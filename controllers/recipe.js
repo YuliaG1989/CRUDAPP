@@ -11,7 +11,7 @@ const Comments = require('../models/comments.js')
 const commentSeed = require('../models/commentsSeed')
 
 router.get('/register', (req, res) => {
-  res.render('register.ejs', { currentUser: req.session.currentUser })
+  res.render('register.ejs')
 })
 
 router.post('/register', (req, res) => {
@@ -19,7 +19,7 @@ router.post('/register', (req, res) => {
  req.body.password = bcrypt.hashSync(req.body.password.toString(), bcrypt.genSaltSync(10))
   Login.create(req.body, (err, createdUser) => {
     console.log('user is created', createdUser)
-    res.redirect('/')
+    res.redirect('/login.ejs')
   })
 })
 
@@ -28,7 +28,7 @@ router.get('/login', (req, res) => {
 })
 
 
-router.post('/login', (req, res) => {
+router.post('/logged', (req, res) => {
   
  Login.findOne({ email: req.body.email }, (err, foundUser) => {
 
@@ -48,7 +48,8 @@ router.post('/login', (req, res) => {
         } else {
           req.session.currentUser = foundUser
           console.log(foundUser)
-          res.send(`<a  href="/">Welcome back, ${foundUser.email} </a>`)
+          // res.send(`<a  href="/">Welcome back, ${foundUser.email} </a>`)
+          res.render('logged.ejs', {currentUser: foundUser})
         }
       }
     })
@@ -142,7 +143,7 @@ router.get('/new', (req, res)=>{
   
 // Categories.collection.drop()
 
-
+// Login.collection.drop()
  //_______________________________ 
       //___________________________
   //SEARCH_____________________
