@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <%- include ('./partials/head.ejs') %>
+</head>
+
+<body>
+
+    <header>
+        <%- include ('./partials/header.ejs') %>
+
+    </header>
+<ol>
+    <div class="row">
+        
+    <%for(let i=0; i< recipe.length; i++){%>
+        
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <a href = "/<%=recipe[i].id%>"> 
+                    <img style="width: 200px" src="<%=recipe[i].image%>"></img>
+                     <li>
+                        <%=recipe[i].name%>
+                    </li>
+
+                    <li>Cuisine:
+                        <%=recipe[i].category%>
+                    </li>
+                </a>
+
+                </div>
+            
+        
+        <%}%>
+    
+        </div>
+        </div>
+            </ol>
+            </form>
+            <%- include('./partials/footer.ejs') %>
+</body>
+
+</html>

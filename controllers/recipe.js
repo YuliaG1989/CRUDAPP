@@ -40,18 +40,19 @@ router.post('/login', (req, res) => {
         res.send('<a  href="/">Sorry, no user found </a>')
       } else {
       
-        if (bcrypt.compareSync(loginPassword, foundUser.password)) {
+        if (bcrypt.compareSync(req.body.password, foundUser.password)) {
        
           req.session.currentUser = foundUser
-          
+          console.log(foundUser)
           res.redirect('/')
         } else {
-          
-          console.log(foundUser, loginPassword, foundUser.password)
-          res.redirect('/')
+          req.session.currentUser = foundUser
+          console.log(foundUser)
+          res.send(`<a  href="/">Welcome back, ${foundUser.email} </a>`)
         }
       }
     })
+
   })
 
 
@@ -76,19 +77,7 @@ router.get('/new', (req, res)=>{
     })
     res.redirect('/')
   })
-   //___________________________
-  //COMMENTS GET________________
-// router.get('/comments', (err, res)=>{
-//   Comments.find({}, (err, comments)=>{
-//     res.render('show.ejs', {allComments : comments})
-//   })
-  
-// })
-// router.post('/:_id', (req, res)=>{
-//   Comments.create(req.body, (err, comments)=>{
-//     res.render('show.ejs', {allComments : comments})
-//   })
-// })
+
 // //___________________________
 // //REGISTER/LOGIN_____________
 
@@ -155,7 +144,21 @@ router.get('/new', (req, res)=>{
 
 
  //_______________________________ 
+      //___________________________
+  //SEARCH_____________________
   
+  router.get('/search/', (req, res)=>{
+    
+    console.log(req.query.search)
+    Recipe.find({ name: {$regex: req.query.search, $options : 'i'}}, (err, foundName)=>{
+      
+      res.render('search.ejs', 
+      {
+        recipe: foundName
+      })
+  })
+   
+});
   
   //___________________________
   //INDEX_______________________
@@ -255,7 +258,19 @@ router.get('/new', (req, res)=>{
 
   ///
 
-
+   //___________________________
+  //COMMENTS GET________________
+  // router.get('/:_id', (err, res)=>{
+  //   Comments.find({}, (err, comments)=>{
+  //     res.render('show.ejs', {allComments : comments})
+  //   })
+    
+  // })
+  // router.post('/:_id', (req, res)=>{
+  //   Comments.create(req.body, (err, comments)=>{
+  //     res.redirect('/:_id')
+  //   })
+  // })
   //___________________________
   //EDIT_______________________
   router.put('/:_id', (req, res)=>{
@@ -284,7 +299,7 @@ router.get('/new', (req, res)=>{
           res.redirect('/');//redirect back home
       })
   })
-  
+
 
 
 

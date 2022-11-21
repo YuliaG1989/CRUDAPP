@@ -544,7 +544,7 @@ module.exports = [
 
  {
      name: "Rice Paper Summer Rolls",
-     image: "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2015/04/How-to-Make-Summer-Rolls.jpg",
+     image: "https://drivemehungry.com/wp-content/uploads/2020/06/vegetarian-summer-rolls-3.jpg",
      category: "Vietnamese",
      ingredients: [
         "16 (6-inch) rice paper rounds",

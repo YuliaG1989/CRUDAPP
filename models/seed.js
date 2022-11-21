@@ -51,7 +51,7 @@ module.exports = [
 
 {
     name: "Croatian",
-    image: "https://www.lacademie.com/wp-content/uploads/2022/02/croatian-dish.jpg",
+    image: "https://www.willflyforfood.net/wp-content/uploads/2021/09/croatian-food-jota.jpg",
     intro: "Croatian cuisine combines long-standing traditions with significant influences from Italian, Hungarian, Turkish cuisines, and some others. After all, a distinct culinary culture has emerged and flourished through time."
 
 },
