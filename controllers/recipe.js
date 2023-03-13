@@ -17,7 +17,7 @@ router.get('/register', (req, res) => {
 router.post('/register', (req, res) => {
  
  req.body.password = bcrypt.hashSync(req.body.password.toString(), bcrypt.genSaltSync(10))
-  Login.create(req.body, (err, createdUser) => {
+  Login.create(req.body).then((err, createdUser) => {
     console.log('user is created', createdUser)
     res.redirect('/login.ejs')
   })
@@ -30,7 +30,7 @@ router.get('/login', (req, res) => {
 
 router.post('/logged', (req, res) => {
   
- Login.findOne({ email: req.body.email }, (err, foundUser) => {
+ Login.findOne({ email: req.body.email }).then( (err, foundUser) => {
 
       if (err) {
         console.log(err)
@@ -75,10 +75,10 @@ router.get('/new', (req, res)=>{
        category: req.body.category,
        ingredients: req.body.ingredients.split(','),
        instructions: req.body.instructions
-    })
+    }).then(()=>{
     res.redirect('/')
   })
-
+})
 // //___________________________
 // //REGISTER/LOGIN_____________
 
@@ -151,7 +151,7 @@ router.get('/new', (req, res)=>{
   router.get('/search/', (req, res)=>{
     
     console.log(req.query.search)
-    Recipe.find({ name: {$regex: req.query.search, $options : 'i'}}, (err, foundName)=>{
+    Recipe.find({ name: {$regex: req.query.search, $options : 'i'}}).then((foundName)=>{
       
       res.render('search.ejs', 
       {
@@ -164,7 +164,7 @@ router.get('/new', (req, res)=>{
   //___________________________
   //INDEX_______________________
   router.get('/' , (req, res) => {
-    Categories.find({}, (err, categoriesData)=>{
+    Categories.find({}).then((categoriesData)=>{
     res.render('index.ejs', {category: categoriesData});
     })
   });
@@ -173,7 +173,7 @@ router.get('/new', (req, res)=>{
   //SHOW RANDOM RECIPE_____________________
   router.get('/random', (req,res)=>{
   
-    Recipe.find({}, (err, randomRecipe)=>{
+    Recipe.find({}).then((randomRecipe)=>{
     res.render('random.ejs', {recipe: randomRecipe})
   })
   })
@@ -181,7 +181,7 @@ router.get('/new', (req, res)=>{
   //_______________________________________
   //SHOW DISHES PICTURES AND NAMES_________
   router.get('/thai' , (req, res) => {
-    Recipe.find({category:'Thai'}, (err, showCuisine)=>{
+    Recipe.find({category:'Thai'}).then((showCuisine)=>{
       res.render('dishes.ejs', {recipe: showCuisine})
     })
   })
@@ -191,7 +191,7 @@ router.get('/new', (req, res)=>{
     })
   })
   router.get('/chinese' , (req, res) => {
-    Recipe.find({category:'Chinese'}, (err, showCuisine)=>{
+    Recipe.find({category:'Chinese'}).then((showCuisine)=>{
       res.render('dishes.ejs', {recipe: showCuisine})
     })
   })
@@ -206,7 +206,7 @@ router.get('/new', (req, res)=>{
     })
   })
   router.get('/spanish' , (req, res) => {
-    Recipe.find({category:'Spanish'}, (err, showCuisine)=>{
+    Recipe.find({category:'Spanish'}).then((showCuisine)=>{
       res.render('dishes.ejs', {recipe: showCuisine})
     })
   })
@@ -216,12 +216,12 @@ router.get('/new', (req, res)=>{
     })
   })
   router.get('/mexican' , (req, res) => {
-    Recipe.find({category:'Mexican'}, (err, showCuisine)=>{
+    Recipe.find({category:'Mexican'}).then((showCuisine)=>{
       res.render('dishes.ejs', {recipe: showCuisine})
     })
   })
   router.get('/vietnamese' , (req, res) => {
-    Recipe.find({category:'Vietnamese'}, (err, showCuisine)=>{
+    Recipe.find({category:'Vietnamese'}).then((showCuisine)=>{
       if(err){
         console.log(err)
       }else{
@@ -235,12 +235,12 @@ router.get('/new', (req, res)=>{
     })
   })
   router.get('/croatian' , (req, res) => {
-    Recipe.find({category:'Croatian'}, (err, showCuisine)=>{
+    Recipe.find({category:'Croatian'}).then((showCuisine)=>{
       res.render('dishes.ejs', {recipe: showCuisine})
     })
   })
   router.get('/georgian' , (req, res) => {
-    Recipe.find({category:'Georgian'}, (err, showCuisine)=>{
+    Recipe.find({category:'Georgian'}).then((showCuisine)=>{
       res.render('dishes.ejs', {recipe: showCuisine})
     })
   })
@@ -248,7 +248,7 @@ router.get('/new', (req, res)=>{
   //SHOW RECIPES_______________________
   
   router.get('/:_id' , (req, res) => {
-    Recipe.findById(req.params._id, (err, idRecipe)=>{
+    Recipe.findById(req.params._id).then((idRecipe)=>{
       // if (req.params._id === "favicon.ico") {
       //   return res.status(404)
       // }else{
@@ -276,7 +276,7 @@ router.get('/new', (req, res)=>{
   //EDIT_______________________
   router.put('/:_id', (req, res)=>{
     // res.send(req.body)
-    Recipe.findByIdAndUpdate(req.params._id, req.body, {new: true}, (err, updatedItem)=>{
+    Recipe.findByIdAndUpdate(req.params._id, req.body, {new: true}).then((updatedItem)=>{
       if(err){
         console.log(err)
       }else{
@@ -286,7 +286,7 @@ router.get('/new', (req, res)=>{
   })
   
   router.get('/:_id/edit', (req, res)=>{
-    Recipe.findById(req.params._id, (err, currentRecipe)=>{
+    Recipe.findById(req.params._id).then((currentRecipe)=>{
       res.render('edit.ejs', {recipe: currentRecipe})
     })
   })
@@ -296,7 +296,7 @@ router.get('/new', (req, res)=>{
   //DELETE_____________________
   
   router.delete('/:id', (req, res)=>{
-      Recipe.findByIdAndRemove(req.params.id, (err, data)=>{
+      Recipe.findByIdAndRemove(req.params.id).then(( data)=>{
           res.redirect('/');//redirect back home
       })
   })
