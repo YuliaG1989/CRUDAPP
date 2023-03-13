@@ -119,13 +119,13 @@ router.get('/new', (req, res)=>{
   // })
 
 
-  // Recipe.create(recipeSeed, (err, data)=>{
-  //   if(err){
-  //     console.log(err)
-  //   }else{
-  //   console.log(data)
-  //   }
-  // })
+  Recipe.create(recipeSeed, (err, data)=>{
+    if(err){
+      console.log(err)
+    }else{
+    console.log(data)
+    }
+  })
 
   
   // router.get('/seed', (req,res)=>{
